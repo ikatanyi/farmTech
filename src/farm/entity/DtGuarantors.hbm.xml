@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtGuarantors" table="dt_guarantors" catalog="db_dms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="guanteeId" type="string">
+            <column name="Guantee_id" length="100" not-null="true" />
+        </property>
+        <property name="guarantorId" type="string">
+            <column name="Guarantor_id" length="100" not-null="true" />
+        </property>
+        <property name="attendantId" type="string">
+            <column name="Attendant_id" length="100" not-null="true" />
+        </property>
+        <property name="date" type="string">
+            <column name="Date" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

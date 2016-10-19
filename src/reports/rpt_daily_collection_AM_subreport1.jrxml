@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_daily_collection_subreport1" language="groovy" columnCount="31" printOrder="Horizontal" pageWidth="830" pageHeight="802" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="25" columnSpacing="1" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Key" uuid="1c925917-4e77-4186-b298-c228ea14d833">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="farmerid" class="java.lang.String"/>
+	<parameter name="date" class="java.util.Date"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_dailycollection.`date` AS date,
+     dt_dailycollection.`farmerId` AS farmerId,
+     max(case when dt_dailycollection.`session`='AM' then coalesce(dt_dailycollection.`quantity`,0.0) end) as am,
+max(case when dt_dailycollection.`session`='PM' then coalesce(dt_dailycollection.`quantity`,0.0) end) AS pm
+FROM
+     `dt_dailycollection` dt_dailycollection
+where
+   dt_dailycollection.`farmerId`=$P{farmerid} and Month(date)
+GROUP BY
+    dt_dailycollection.`farmerId`,Day(dt_dailycollection.`date`)]]>
+	</queryString>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="am" class="java.lang.Double"/>
+	<field name="pm" class="java.lang.Double"/>
+	<variable name="qty-sess" class="java.lang.String">
+		<variableExpression><![CDATA[$F{am}+","+$F{am}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b81ea4f2-46af-49eb-97ef-fc0d4d82eb3a" x="0" y="0" width="13" height="20" forecolor="#0033FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{am}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cb1919cb-72b0-4aa1-a604-9be9b0905ed8" x="13" y="0" width="12" height="20" forecolor="#0033FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pm}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

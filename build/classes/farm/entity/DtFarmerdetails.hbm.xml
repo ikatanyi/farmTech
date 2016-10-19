@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtFarmerdetails" table="dt_farmerdetails" catalog="db_dms">
+        <id name="farmerId" type="string">
+            <column name="farmerId" length="100" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="centerNo" type="string">
+            <column name="center_no" length="20" not-null="true" />
+        </property>
+        <property name="fname" type="string">
+            <column name="Fname" length="100" not-null="true" />
+        </property>
+        <property name="lname" type="string">
+            <column name="Lname" length="100" not-null="true" />
+        </property>
+        <property name="idno" type="string">
+            <column name="idno" length="100" not-null="true" />
+        </property>
+        <property name="dob" type="string">
+            <column name="DOB" length="20" not-null="true" />
+        </property>
+        <property name="maritalStatus" type="string">
+            <column name="Marital_Status" length="50" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="Gender" length="10" not-null="true" />
+        </property>
+        <property name="PAddress" type="string">
+            <column name="P_address" length="100" not-null="true" />
+        </property>
+        <property name="PCity" type="string">
+            <column name="P_city" length="100" not-null="true" />
+        </property>
+        <property name="PState" type="string">
+            <column name="P_state" length="100" not-null="true" />
+        </property>
+        <property name="PZip" type="string">
+            <column name="P_zip" length="20" not-null="true" />
+        </property>
+        <property name="PPhone" type="string">
+            <column name="P_phone" length="50" not-null="true" />
+        </property>
+        <property name="PEmail" type="string">
+            <column name="P_Email" length="100" not-null="true" />
+        </property>
+        <property name="spouseId" type="string">
+            <column name="SpouseID" length="50" not-null="true" />
+        </property>
+        <property name="spouseFname" type="string">
+            <column name="SpouseFname" length="100" not-null="true" />
+        </property>
+        <property name="spouseLname" type="string">
+            <column name="SpouseLname" length="100" not-null="true" />
+        </property>
+        <property name="paymentType" type="string">
+            <column name="payment_type" length="50" not-null="true" />
+        </property>
+        <property name="bankName" type="string">
+            <column name="bank_name" length="50" not-null="true" />
+        </property>
+        <property name="accountNo" type="string">
+            <column name="account_no" length="75" not-null="true" />
+        </property>
+        <property name="branch" type="string">
+            <column name="branch" length="50" not-null="true" />
+        </property>
+        <property name="serviceProvider" type="string">
+            <column name="service_provider" length="100" not-null="true" />
+        </property>
+        <property name="mobileNo" type="string">
+            <column name="mobile_no" length="100" not-null="true" />
+        </property>
+        <property name="insuranceId" type="string">
+            <column name="InsuranceID" length="50" not-null="true" />
+        </property>
+        <property name="insuranceType" type="string">
+            <column name="InsuranceType" length="100" not-null="true" />
+        </property>
+        <property name="planName" type="string">
+            <column name="Plan_name" length="1000" not-null="true" />
+        </property>
+        <property name="pcoverageFrmDate" type="string">
+            <column name="PcoverageFrmDate" length="1000" not-null="true" />
+        </property>
+        <property name="pcoverageToDate" type="string">
+            <column name="PcoverageToDate" length="50" not-null="true" />
+        </property>
+        <property name="insuredCity" type="string">
+            <column name="InsuredCity" length="50" not-null="true" />
+        </property>
+        <property name="insuredState" type="string">
+            <column name="InsuredState" length="100" not-null="true" />
+        </property>
+        <property name="insuredZip" type="string">
+            <column name="InsuredZip" length="50" not-null="true" />
+        </property>
+        <property name="insuredType" type="string">
+            <column name="InsuredType" length="50" not-null="true" />
+        </property>
+        <property name="insuredEmail" type="string">
+            <column name="InsuredEmail" length="50" not-null="true" />
+        </property>
+        <property name="policyGroup" type="string">
+            <column name="PolicyGroup" length="100" not-null="true" />
+        </property>
+        <property name="insuredFname" type="string">
+            <column name="InsuredFname" length="100" not-null="true" />
+        </property>
+        <property name="insuredLname" type="string">
+            <column name="InsuredLname" length="100" not-null="true" />
+        </property>
+        <property name="insuredDob" type="string">
+            <column name="InsuredDOB" length="50" not-null="true" />
+        </property>
+        <property name="insuredAddress" type="string">
+            <column name="insuredAddress" length="50" not-null="true" />
+        </property>
+        <property name="insuredPhone" type="string">
+            <column name="InsuredPhone" length="50" not-null="true" />
+        </property>
+        <property name="insuredRelationship" type="string">
+            <column name="InsuredRelationship" length="50" not-null="true" />
+        </property>
+        <property name="regDate" type="string">
+            <column name="RegDate" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

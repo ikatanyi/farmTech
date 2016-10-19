@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtUserprivileges" table="dt_userprivileges">
+        <id name="userId" type="java.lang.String" access="field">
+            <column name="UserId" />
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
+        </id>
+        <property name="ul1" type="java.lang.String" access="field">
+            <column name="UL1" />
+        </property>
+        <property name="ul10" type="java.lang.String" access="field">
+            <column name="UL10" />
+        </property>
+        <property name="ul11" type="java.lang.String" access="field">
+            <column name="UL11" />
+        </property>
+        <property name="ul2" type="java.lang.String" access="field">
+            <column name="UL2" />
+        </property>
+        <property name="ul3" type="java.lang.String" access="field">
+            <column name="UL3" />
+        </property>
+        <property name="ul4" type="java.lang.String" access="field">
+            <column name="UL4" />
+        </property>
+        <property name="ul5" type="java.lang.String" access="field">
+            <column name="UL5" />
+        </property>
+        <property name="ul6" type="java.lang.String" access="field">
+            <column name="UL6" />
+        </property>
+        <property name="ul7" type="java.lang.String" access="field">
+            <column name="UL7" />
+        </property>
+        <property name="ul8" type="java.lang.String" access="field">
+            <column name="UL8" />
+        </property>
+        <property name="ul9" type="java.lang.String" access="field">
+            <column name="UL9" />
+        </property>
+        <one-to-one name="user" class="farm.entity.DtUsers" access="field"></one-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtCoffeCollection" table="dt_coffe_collection">
+        <id name="id" type="java.lang.Integer" access="field">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="attendant" type="java.lang.String" access="field">
+            <column name="attendant" length="100" not-null="true" />
+        </property>
+        <property name="date" type="date" access="field">
+            <column name="date" not-null="true" />
+        </property>
+        <property name="farmerId" type="java.lang.String" access="field">
+            <column name="farmerId" length="11" not-null="true" />
+        </property>
+        <property name="quantity" type="double" access="field">
+            <column name="quantity" not-null="true" />
+        </property>
+        <property name="rate" type="double" access="field">
+            <column name="rate" not-null="true" />
+        </property>
+        <property name="type" type="java.lang.String" access="field">
+            <column name="type" length="50" not-null="true" />
+        </property>
+        <one-to-one name="p_account" class="farm.entity.DtPurchasesAccount" access="field" cascade="all"></one-to-one>
+    </class>
+</hibernate-mapping>

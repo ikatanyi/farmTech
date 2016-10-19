@@ -1,0 +1,170 @@
+License Agreement
+Copyright (c) 2012-2014 Stag Technologies INC.
+All Rights Reserved
+January 2015
+
+Dairy Management System components licensed from 
+Stag Technologies INC
+
+PLEASE READ THE ENTIRE TEXT OF THIS LICENSE AGREEMENT 
+CAREFULLY AND MAKE SURE YOU AGREE WITH ALL THE TERMS 
+AND CONDITIONS BEFORE USING THIS SOFTWARE.  
+
+The accompanying computer program ("Software") is licensed to 
+the user by Stag Technologies INC subject to the terms and 
+conditions of this License Agreement. By clicking on "Agree"
+or "Accept" during installation of the electronically 
+distributed version or by installing and using this Software
+or by opening the sealed package of the retail version you 
+agree to be bound by these terms and conditions. If you do not
+agree to any of the terms of this License do not install or
+use this Software.
+
+The Software is licensed, not sold, to the user by ashampoo
+GmbH & Co. KG for use exclusively under the terms and 
+conditions of this License Agreement. Stag Technologies INC
+reserves all and any rights not expressly granted to the user.
+The user owns the physical media upon which the Software is
+distributed or recorded but Stag Technologies INC retains
+ownership of the Software itself and the accompanying data 
+and documentation.
+
+1. License: 
+(a) This non-exclusive License allows one registered user to 
+install and use the Software on one (1) computer or local 
+workstation only, subject to the terms and conditions of this 
+License Agreement. Multiple users may use the Software non-
+simultaneously if it is not installed on more than one 
+computer. The Software may be transferred to another computer 
+if it is then deleted from the original computer and is never 
+used on more than one computer simultaneously. 
+(b) If the Software is licensed as an update or upgrade said 
+update or upgrade does not constitute a second grant of 
+license. The update or upgrade may only be used to replace the 
+original, legally licensed version and the original version may 
+not be transferred to another user or other third parties.
+(c) If the License is transferred to another user the original 
+user must erase the program from the computer on which it was 
+installed and surrender to the new licensee both the original 
+and all copies of the program and its documentation. The new 
+licensee must then register the program with ashampoo 
+GmbH & Co. KG and agree to be bound by the terms and conditions
+of this License Agreement.
+(d) If the Software is a time-limited version (shareware) it may
+not be used after the end of the trial period. Manipulation of the
+program itself or the operating system and/or the use of any 
+software that enables continued use of the program after the end 
+of the trialperiod is expressly prohibited and will be subject to
+prosecution.
+
+2. Copyright and Other Rights:
+(a) The Software, all accompanying data and text files and all 
+its documentation in printed and electronic form are protected 
+by national and international copyright and other proprietary 
+rights. You may make no more than one copy of the Software for 
+personal backup purposes only. Such backup copies must remain 
+in the possession of the original registered user, may not be 
+used to create additional installations on further computers 
+for use by other users and must include all copyright notices 
+of Stag Technologies INC and any other applicable
+copyright notices. Any and all other forms of reproduction or
+copying of the Software and its accompanying data and
+documentation, including copying the Software or parts thereof
+to any and all network, Internet and/or online devices and/or
+services, constitute infringement of copyright and other
+rights.
+(b) Any images, graphics and other audio and/or visual material 
+included with the Software may be protected by additional 
+copyrights and other rights of the respective authors or 
+owners. By agreeing to be bound by the terms of this License 
+Agreement you also agree to observe the rights subsisting in 
+such additional material and any regulations pertaining 
+thereto.
+(c) The Software embodies and contains secret proprietary 
+technologies and information. Reverse engineering, disassembly, 
+decompilation and any and all other methods capable of 
+providing access to the trade secrets contained in the Software 
+are all strictly and expressly prohibited. 
+
+3. Other Restrictions:
+(a) You may not modify, adapt, translate or produce derivative 
+works based upon the Software or any part of the Software in 
+any form whatsoever. 
+(b) Unless otherwise specifically indicated in the manual 
+and/or other documentation you may only use the Software for 
+private, non-commercial purposes. You may not  market, loan, 
+rent, lease or advertise the Software without the express prior 
+written consent of Stag Technologies INC. Distribution of 
+shareware, freeware and public domain software is also only
+permitted with the express, prior written consent of Stag Technologies INC.
+
+(c) You may not use the Software or any of the data or material 
+or documentation distributed with the Software for any illegal 
+or immoral purposes or for any purposes which could be 
+construed as illegal or immoral or for purposes which infringe 
+upon legal or commercial rights of any parties under any 
+circumstances. 
+
+4. Limited Warranty:
+(a) Stag Technologies INC warrants the physical media upon
+which the Software is distributed (floppy disk, CD, DVD etc.)
+but not the program recorded on the physical media to be free
+of defects in materials and workmanship for a period of 30 
+(thirty) days from the date of purchase as documented by the 
+purchase receipt. Media found to be faulty within this thirty-day
+period will be replaced by Stag Technologies INC free of 
+charge unless the faults are due to willful damage, negligence
+or improper use. Such replacement will be your only and exclusive
+remedy in the event of fault or defect. The program itself is
+provided "as is" without any warranty of any kind, express or
+implied, including but not restricted to warranties of 
+merchantability and fitness for a specific purpose.
+(b) Under no circumstances will Stag Technologies INC, ashampoo
+Technology GmbH & Co, KG, its officers, agents, employees,
+affiliates or associates be liable for any consequential,
+incidental, indirect or special damages whatsoever (including but
+not restricted to damages for loss of business income or profits,
+interruption of business, financial losses, loss of data or
+information etc.), deriving from use of, improper use of or
+inability to use the Software or any of the material,
+documentation or information included or distributed with the
+Software, regardless of the nature and foundation of the individual
+claim or claims. The liability of Stag Technologies INC and
+ashampoo Technology GmbH & Co. KG will under all circumstances be
+limited to the purchase price of the Software. All other liabilities
+and remedies express or implied, including but not restricted to 
+any express or implied warranties of merchantability and 
+fitness for a specific purpose, are expressly excluded. These 
+limitations may not apply in jurisdictions that do not permit 
+the exclusion or limitation of implied warranties.
+
+5. Product Modifications and Improvements:
+Stag Technologies INC reserves the right to change, modify and
+improve its products at any time and without notice in the normal 
+course of product development. This right includes but is not 
+restricted to changes and modifications that add new functions 
+or features or remove functions or features mentioned in the 
+product advertising or documentation.
+
+6. Termination:
+This License is effective to all registered users until 
+terminated. Failure to comply with any of the terms or 
+conditions of this License Agreement will terminate the License 
+automatically, immediately and without notice from Stag Technologies INC.
+All copies of the Software and its documentation
+must be destroyed immediately upon termination of the License.
+All regulations of this License Agreement, particularly Sections
+4 and 7, shall continue to apply and be legally binding following 
+termination.
+
+7. General Provisions:
+This License will be construed under the laws of the 
+Federal Republic of Germany. If any term or provision of this 
+License should be or prove to be legally ineffective or 
+contrary to law, said term or provision will be enforced to the 
+maximum extent permissible, and the remaining terms and 
+provisions will not be prejudiced by this and shall remain in 
+full force and effect.
+
+
+Copyright (c) 2012-2015 Stag Technologies INC

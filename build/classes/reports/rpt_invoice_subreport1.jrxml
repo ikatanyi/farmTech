@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_invoice_subreport1" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cbb21e3f-c10c-4f88-bcc7-18a2a8b8ad65">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientId" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_drugsaletrx.`Record_code` AS dt_drugsaletrx_Record_code,
+     dt_drugsaletrx.`ProductName` AS dt_drugsaletrx_ProductName,
+     dt_drugsaletrx.`Units` AS dt_drugsaletrx_Units,
+     dt_drugsaletrx.`Amount` AS dt_drugsaletrx_Amount,
+     dt_drugsaletrx.`Total` AS dt_drugsaletrx_Total,
+     dt_drugsaletrx.`PatientID` AS dt_drugsaletrx_PatientID,
+     dt_drugsaletrx.`Date` AS dt_drugsaletrx_Date
+FROM
+     `dt_drugsaletrx` dt_drugsaletrx
+WHERE dt_drugsaletrx.`PatientID`=$P{patientId} AND dt_drugsaletrx.`Date`=$P{date}]]>
+	</queryString>
+	<field name="dt_drugsaletrx_Record_code" class="java.lang.Integer"/>
+	<field name="dt_drugsaletrx_ProductName" class="java.lang.String"/>
+	<field name="dt_drugsaletrx_Units" class="java.lang.Integer"/>
+	<field name="dt_drugsaletrx_Amount" class="java.lang.Double"/>
+	<field name="dt_drugsaletrx_Total" class="java.lang.Double"/>
+	<field name="dt_drugsaletrx_PatientID" class="java.lang.String"/>
+	<field name="dt_drugsaletrx_Date" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9f46cc4f-b09b-4323-a38b-7acf3425d780" x="10" y="0" width="256" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dt_drugsaletrx_ProductName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f930987-1f6e-4a80-a516-2e60bcae0a4a" x="283" y="0" width="87" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dt_drugsaletrx_Units}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="db3b0452-5b83-4959-89e0-01364fbad166" x="370" y="0" width="81" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dt_drugsaletrx_Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45ef8fd3-ad12-429e-bf1f-4ad1dfa5325a" x="462" y="0" width="92" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dt_drugsaletrx_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

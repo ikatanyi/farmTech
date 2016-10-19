@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtSuppDebtorsaccount" table="dt_supp_debtorsaccount" catalog="db_dms">
+        <id name="recordcode" type="string">
+            <column name="Recordcode" length="20" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="invoiceNo" type="int">
+            <column name="Invoice_No" not-null="true" />
+        </property>
+        <property name="date" type="string">
+            <column name="Date" length="20" not-null="true" />
+        </property>
+        <property name="customerCode" type="string">
+            <column name="CustomerCode" length="20" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="1000" not-null="true" />
+        </property>
+        <property name="pmtMethod" type="string">
+            <column name="Pmt_method" length="20" not-null="true" />
+        </property>
+        <property name="checkNo" type="string">
+            <column name="Check_No" length="20" not-null="true" />
+        </property>
+        <property name="account" type="string">
+            <column name="Account" length="1000" not-null="true" />
+        </property>
+        <property name="debit" type="float">
+            <column name="Debit" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="credit" type="float">
+            <column name="Credit" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

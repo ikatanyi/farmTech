@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_coffee_farmer_payment" language="groovy" pageWidth="330" pageHeight="500" columnWidth="290" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="404ccac5-4eeb-4c3a-ab7e-853f08f1f22b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="farmerid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="month" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="year" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="session" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CONCAT(dt_farmerdetails.`Fname`,'',dt_farmerdetails.`Lname`) AS name,
+     dt_farmerdetails.`farmerId` AS dt_farmerdetails_farmerId,
+     dt_farmerdetails.`center_no` AS dt_farmerdetails_center_no,
+     dt_farmerdetails.`idno` AS idno,
+     dt_farmerdetails.`DOB` AS DOB,
+     dt_farmerdetails.`P_address` AS address,
+     dt_farmerdetails.`P_city` AS city,
+     dt_farmerdetails.`P_state` AS state,
+     dt_farmerdetails.`P_phone` AS phone,
+     dt_farmerdetails.`P_Email` AS Email,
+     dt_farmerdetails.`account_no` AS account_no,
+     dt_farmerdetails.`branch` AS branch,
+     dt_farmerdetails.`service_provider` AS service_provider,
+     dt_farmerdetails.`mobile_no` AS mobile_no,
+     dt_farmerdetails.`Gender` AS Gender,
+     farmer_cofee_sum.`type` AS type,
+     farmer_cofee_sum.`quantity` AS quantity,
+     farmer_cofee_sum.`harvest` AS harvest,
+     farmer_cofee_sum.`rate` AS rate,
+     farmer_cofee_sum.`date` AS date,
+     v_coffee_farmer_payroll.`id` AS id,
+     v_coffee_farmer_payroll.`farmerId` AS farmerId,
+     v_coffee_farmer_payroll.`session` AS session,
+     v_coffee_farmer_payroll.`gross_pay` AS gross_pay,
+     v_coffee_farmer_payroll.`credit` AS credit,
+     v_coffee_farmer_payroll.`net_total` AS net_total
+FROM
+     `dt_farmerdetails` dt_farmerdetails INNER JOIN `farmer_cofee_sum` farmer_cofee_sum ON dt_farmerdetails.`farmerId` = farmer_cofee_sum.`farmerid`
+     INNER JOIN `v_coffee_farmer_payroll` v_coffee_farmer_payroll ON dt_farmerdetails.`farmerId` = v_coffee_farmer_payroll.`farmerId`
+     AND farmer_cofee_sum.`harvest` = v_coffee_farmer_payroll.`session`
+WHERE dt_farmerdetails.`farmerId`=$P{farmerid}
+AND Year(farmer_cofee_sum.`date`)=$P{year} and farmer_cofee_sum.`harvest`=$P{session}
+GROUP BY
+dt_farmerdetails.`farmerId`,
+Year(farmer_cofee_sum.`date`),
+farmer_cofee_sum.`harvest`,
+farmer_cofee_sum.`type`]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_farmerdetails_farmerId" class="java.lang.String"/>
+	<field name="dt_farmerdetails_center_no" class="java.lang.String"/>
+	<field name="idno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DOB" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="Email" class="java.lang.String"/>
+	<field name="account_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="branch" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="service_provider" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mobile_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quantity" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harvest" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rate" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="session" class="java.lang.String"/>
+	<field name="gross_pay" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="credit" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="net_total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="amount" class="java.lang.String">
+		<variableExpression><![CDATA[$F{quantity}*$F{rate}]]></variableExpression>
+	</variable>
+	<variable name="quantity_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<textField>
+				<reportElement uuid="81666a5e-5190-4392-936a-76bbea353c00" x="53" y="69" width="123" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{State}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8fb63358-c31d-4cbb-b1e8-a043023d328e" x="0" y="96" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4538bce2-28a5-4b89-abf2-f88daea0cb19" x="18" y="32" width="238" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c462174e-e5b8-42f8-a8b0-823386e521f4" x="0" y="57" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[City :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c68c49c2-f087-4b3a-b2cd-e892b7cb77ad" x="53" y="83" width="123" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1f657014-17e5-4613-b4b5-cf7fc66d1896" x="0" y="83" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="377cd2f5-3d44-41bc-aa0c-d04c1eaf4cfb" x="0" y="0" width="290" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="63740cdf-71a2-4309-8a10-309ad2a23f10" x="0" y="70" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="28c70c39-40b9-434c-a7fd-1ee34b5c4ce1" x="18" y="20" width="238" height="19"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a612f5db-1d2a-4894-9fae-642147fdc823" x="53" y="96" width="123" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a50890b6-7b36-44bd-9812-47344b7dd48b" x="53" y="57" width="123" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{City}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3e616723-b57c-4ae5-b44b-d554f28e65ae" x="0" y="0" width="53" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<frame>
+				<reportElement uuid="57795ffe-43fe-40bd-83d9-86251c52aa76" mode="Opaque" x="0" y="48" width="290" height="20" forecolor="#CCCCFF" backcolor="#CCCCFF"/>
+				<staticText>
+					<reportElement uuid="13cc9fdb-16eb-4456-9253-73e06c798023" mode="Transparent" x="0" y="0" width="138" height="20" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Coffee Farmer Payment]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement uuid="dc02bdde-19fc-4ae9-88a4-b5bb35ee29f9" x="2" y="20" width="51" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FarmerId:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f0e3e1ee-81ec-435e-a13a-b3c7df01951b" x="176" y="71" width="47" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="43015494-ebf8-4224-8c4c-c3eb0e00aa43" x="138" y="71" width="38" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1214fdaf-95b7-4ef5-a0fa-23996aa2062f" x="223" y="71" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="51af0f71-3c53-4d92-8f88-fc6acf859ab6" x="0" y="71" width="138" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coffee Type]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="00ee76ae-e8e9-4a6b-b1d3-cc2c92be92b2" x="0" y="90" width="290" height="1" forecolor="#6666FF"/>
+			</line>
+			<textField>
+				<reportElement uuid="2c3d4e2b-6d30-4852-a438-edf17efbbbd0" x="53" y="0" width="203" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b261ec7d-2ab6-409a-a29f-6106a7c20e44" x="53" y="20" width="203" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_farmerdetails_farmerId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement uuid="06ce0576-50eb-462a-b038-2c3f120fcd0d" x="2" y="0" width="136" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="531f7757-1ba7-4422-862a-0c108139e144" x="138" y="0" width="38" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="239b9616-dbe1-442d-919b-7061fd0ac05b" x="176" y="0" width="47" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4de9101e-bef2-425a-ae76-3b88dd1bf7c1" x="223" y="0" width="67" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{amount}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="fce9767d-9781-4b9c-88ce-6e17231d396a" stretchType="RelativeToTallestObject" x="0" y="27" width="290" height="31" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="farmerid">
+					<subreportParameterExpression><![CDATA[$P{farmerid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="month">
+					<subreportParameterExpression><![CDATA[$P{month}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="year">
+					<subreportParameterExpression><![CDATA[$P{year}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rpt_all_coffee_payment_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="47d81da4-b955-4b0e-975b-367c3b4a0b33" x="2" y="30" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d08a072d-327f-40cc-a83c-920c9a4592e5" x="2" y="10" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Qty:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5b50caf4-a87c-4243-a8bf-9b615b3037f8" x="2" y="50" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Credit :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2d836c52-2bd8-4c55-9df3-0cd9a3818d3d" x="2" y="70" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net pay :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f52af74f-351e-40ce-899f-14a9cfe21063" x="212" y="10" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{quantity_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a35368d7-955a-4fbc-b182-a05e06b1da3b" x="212" y="30" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{gross_pay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b389e80d-a546-4972-9873-54d23d347013" x="212" y="50" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa4afc1b-e536-474e-abf7-72660bb73f87" x="212" y="70" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{net_total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="c2e81142-134b-4afe-87f8-bce513d2f6fc" x="2" y="0" width="290" height="1" forecolor="#6666FF"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="60" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="25f8da95-113d-40aa-b2ff-8fbcfa9071d9" x="189" y="34" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="f1f73600-3a2e-4f32-89b4-e8000b35a6ce" x="54" y="53" width="123" height="1" forecolor="#6666FF"/>
+			</line>
+			<staticText>
+				<reportElement uuid="617d5fea-d472-4aa2-82e7-58d6e139ec31" x="1" y="34" width="53" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Signature :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="16034a64-ebda-440e-a387-425bce1fe6f9" x="0" y="10" width="56" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Printed by:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

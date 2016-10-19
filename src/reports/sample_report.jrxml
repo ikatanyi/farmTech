@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from dt_patients]]>
+	</queryString>
+	<field name="PatientId" class="java.lang.String"/>
+	<field name="Fname" class="java.lang.String"/>
+	<field name="Lname" class="java.lang.String"/>
+	<field name="Sname" class="java.lang.String"/>
+	<field name="Gender" class="java.lang.String"/>
+	<field name="IdNo" class="java.lang.String"/>
+	<field name="Address" class="java.lang.String"/>
+	<field name="Phone" class="java.lang.String"/>
+	<field name="Date" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="215" y="0" width="158" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[patient Details]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="119" y="17" width="164" height="20"/>
+				<textElement/>
+				<text><![CDATA[names]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="13" width="164" height="20"/>
+				<textElement/>
+				<text><![CDATA[telephone numbers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="13" width="100" height="24"/>
+				<textElement/>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement  x="119" y="13" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="177" y="13" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="234" y="13" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Sname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="0" y="13" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PatientId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="13" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Phone}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

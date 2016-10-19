@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_patienttests" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40860d39-2147-4754-8b5a-79b54351a1e2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientid" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="attendant" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="quantity" class="java.lang.String"/>
+	<field name="units" class="java.lang.String"/>
+	<variable name="name_1" class="java.lang.String" incrementType="Column"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="f1688fbd-d69c-4abf-a224-caa84bfaed2e" x="-21" y="-27" width="793" height="87" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4b17f778-359a-4b08-9f08-b59d2a7edbd6" x="-21" y="-20" width="166" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DR.BENEDICT T.OSORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0bdf6ebf-8aef-4163-a5df-ec4d52ab1af7" x="145" y="-20" width="210" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M.B Ch.B. Med (Obs/Gynae) Nrb]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="70d8c985-2c71-4e4a-8656-fcc199c16535" x="-21" y="0" width="259" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSULTANT OBSTETRICIAN GYNAECOLOGIST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7fd6b101-f9b9-42f3-91a7-15861c806c90" x="-21" y="20" width="313" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel: Off. 051: -2215 - 573,Res.051-2214-487, Mob.0733-791-887]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="032f8559-72f8-435c-8897-cb4bc377cb96" x="-21" y="40" width="206" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[P.O.BOX 14061 NAKURU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="65c3aba6-85c5-4f2c-b296-307887de384c" x="630" y="40" width="122" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patients Tests]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0a35b9f4-4ddb-4258-b188-7e1ad7ad38f2" x="20" y="0" width="79" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="458df41d-9033-4bed-a3d4-3c49786076a9" x="99" y="0" width="100" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{patientid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b71ef5e0-25cd-47f3-a019-73f04755f09c" x="269" y="3" width="44" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9102ba72-a346-4061-b6c2-41ce0788efd5" x="313" y="3" width="317" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="d5c37733-e9d1-4783-9f34-b5925f8d6d40" x="17" y="0" width="659" height="27" backcolor="#999999"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ccf462c2-b21c-4e14-a7a6-75089330001f" x="100" y="4" width="159" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Test Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4a1ce53-f1c8-4af1-8fa7-8cc492133fd3" x="289" y="4" width="152" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a786ac9d-af6a-43a2-b131-38da1b84aa67" x="452" y="4" width="178" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comments]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement uuid="d292917b-05d8-4940-abf9-ce43d12f1ea6" x="451" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="be9a218b-a7c7-4c2c-936b-975f9c2d8ae4" x="17" y="25" width="659" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="11a3f1e0-8392-4f2a-a348-d62f8983217a" x="99" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="1b88a1b4-8a90-44c9-af45-b9746e43a7b9" x="676" y="1" width="1" height="24"/>
+			</line>
+			<line>
+				<reportElement uuid="adb2f3c3-73a5-4169-8020-83b6b307c9c6" x="17" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="02662fb3-34a2-4a14-bf3e-e60b8d611951" x="289" y="1" width="1" height="24"/>
+			</line>
+			<line>
+				<reportElement uuid="1d6ca2bb-2de4-4adb-bef5-5c8dff4cc161" x="18" y="0" width="658" height="1" forecolor="#663300"/>
+			</line>
+			<textField>
+				<reportElement uuid="7a65cc07-4257-4db2-ad91-33b53a4d9dd1" x="100" y="2" width="189" height="24"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bbbbbe81-e73e-4b03-bfa5-327e831b59d8" x="290" y="2" width="161" height="23"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="57ed3bf4-44cb-416d-b7b3-356398059fd3" x="452" y="1" width="224" height="24"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{units}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f68d721d-0329-4cca-858c-9c4214cefb91" x="29" y="6" width="70" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{name_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a0890144-bec4-42f6-8813-b56f29479eb8" x="0" y="0" width="81" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Attended By :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c81ce24-8974-435a-819a-255588b488fe" x="0" y="20" width="81" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Attended on :]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="8481e75e-378f-4e17-9378-19e0ed7b9e7b" x="81" y="20" width="188" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32c59a75-07c8-4b0e-9eac-ae1c1aaf09a8" x="81" y="0" width="188" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{attendant}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

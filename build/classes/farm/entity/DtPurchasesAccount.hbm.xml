@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtPurchasesAccount" table="dt_purchases_account">
+        <id name="id" type="java.lang.Integer" access="field">
+            <column name="purchase_id" />
+            <generator class="foreign">
+                <param name="property">collection</param>
+            </generator>
+        </id>
+        <property name="credit" type="double" access="field">
+            <column name="credit" not-null="true" />
+        </property>
+        <property name="date" type="date" access="field">
+            <column name="date" not-null="true" />
+        </property>
+        <property name="debit" type="double" access="field">
+            <column name="debit" not-null="true" />
+        </property>
+        <property name="departmentId" type="int" access="field">
+            <column name="department_id" not-null="true" />
+        </property>
+        <property name="description" type="java.lang.String" access="field">
+            <column name="description" length="100" not-null="true" />
+        </property>
+        <property name="purchaseId" type="int" update="false" insert="false" access="field">
+            <column name="purchase_id" not-null="true" />
+        </property>
+        <property name="units" type="double" access="field">
+            <column name="units" not-null="true" />
+        </property>
+        <one-to-one name="collection" class="farm.entity.DtDailycollection" access="field" cascade="persist" constrained="true"></one-to-one>
+        <one-to-one name="coffee_collec" class="farm.entity.DtCoffeCollection" access="field" cascade="persist" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_farmer_payment_subreport1_bal" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c25b5fed-ba07-4dad-a5a5-b1e753a51825">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="farmerid" class="java.lang.String"/>
+	<parameter name="from_date" class="java.util.Date"/>
+	<parameter name="to_date" class="java.util.Date"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_farmer_account.`farmerId` AS dt_farmer_account_farmerId,
+     (SUM(dt_farmer_account.`Debit`)-SUM(dt_farmer_account.`Credit`)) AS bal,
+     dt_farmer_account.`Date` AS dt_farmer_account_Date
+FROM
+     `dt_farmer_account` dt_farmer_account
+where
+     dt_farmer_account.`farmerId`=$P{farmerid}
+AND
+  dt_farmer_account.`Date` NOT BETWEEN  $P{from_date} AND $P{to_date}
+AND
+ dt_farmer_account.`Date` <=$P{to_date}]]>
+	</queryString>
+	<field name="dt_farmer_account_farmerId" class="java.lang.String"/>
+	<field name="bal" class="java.lang.Double"/>
+	<field name="dt_farmer_account_Date" class="java.sql.Date"/>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d9b61b17-5501-44e8-b0ac-735aed40ec49" x="0" y="0" width="100" height="16"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{bal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

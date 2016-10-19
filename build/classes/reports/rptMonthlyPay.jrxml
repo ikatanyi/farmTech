@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptMonthlyPay" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c29a901-3082-429b-aa8e-d6cb39c741a3">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     dt_finalpayroll.`Recordcode` AS dt_finalpayroll_Recordcode,
+     dt_finalpayroll.`IdNo` AS dt_finalpayroll_IdNo,
+     dt_finalpayroll.`Date` AS dt_finalpayroll_Date,
+     dt_finalpayroll.`Basicpay` AS dt_finalpayroll_Basicpay,
+     dt_finalpayroll.`Leavepay` AS dt_finalpayroll_Leavepay,
+     dt_finalpayroll.`Hallowance` AS dt_finalpayroll_Hallowance,
+     dt_finalpayroll.`Orate` AS dt_finalpayroll_Orate,
+     dt_finalpayroll.`Otime` AS dt_finalpayroll_Otime,
+     dt_finalpayroll.`Advance` AS dt_finalpayroll_Advance,
+     dt_finalpayroll.`NHIF` AS dt_finalpayroll_NHIF,
+     dt_finalpayroll.`NSSF` AS dt_finalpayroll_NSSF,
+     dt_finalpayroll.`Paye` AS dt_finalpayroll_Paye,
+     dt_finalpayroll.`DO` AS dt_finalpayroll_DO,
+     dt_finalpayroll.`Gpay` AS dt_finalpayroll_Gpay,
+     dt_finalpayroll.`Tdeductions` AS dt_finalpayroll_Tdeductions,
+     dt_finalpayroll.`Netpay` AS dt_finalpayroll_Netpay
+FROM
+     `dt_finalpayroll` dt_finalpayroll]]>
+	</queryString>
+	<field name="dt_finalpayroll_Recordcode" class="java.lang.Integer"/>
+	<field name="dt_finalpayroll_IdNo" class="java.lang.String"/>
+	<field name="dt_finalpayroll_Date" class="java.lang.String"/>
+	<field name="dt_finalpayroll_Basicpay" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Leavepay" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Hallowance" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Orate" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Otime" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Advance" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_NHIF" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_NSSF" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Paye" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_DO" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Gpay" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Tdeductions" class="java.lang.Double"/>
+	<field name="dt_finalpayroll_Netpay" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement uuid="545df9c3-19e3-43a8-a23f-74d8ffd119b3" x="0" y="0" width="164" height="126"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="944a0c31-ac39-4258-8c7d-9332c4bea121" style="Title" x="270" y="0" width="263" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d405d2c3-3980-4de5-ba1b-0a5d1a2ae544" style="SubTitle" x="303" y="62" width="196" height="22"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c9d0cad-20a5-4b40-a2b5-79f400c2d27a" x="172" y="94" width="383" height="42"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="73a95b2c-11e9-40ab-9733-b9c45c69de01" x="633" y="-73" width="219" height="209"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="83bb2f4f-2dbf-46a3-8ae3-89e3be16d43b" positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="c54a7a13-e251-4549-825e-5fe6e6514aea" style="Column header" x="0" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Recordcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1576bf22-9611-4e2a-927c-d935a47380ce" style="Column header" x="50" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_IdNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="443c7181-68a8-42c4-8b25-5189e2bb5d46" style="Column header" x="100" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3017893c-19ce-4dd4-baa0-5e655782ce1f" style="Column header" x="150" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Basicpay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="519eae46-ae17-4802-9bb7-bbaa610f024b" style="Column header" x="200" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Leavepay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="65c6192a-f8f2-49d6-abb7-5a9765291a14" style="Column header" x="250" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Hallowance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5d389179-cde9-4b42-a961-72b0b5be421e" style="Column header" x="300" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Orate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1c8357b2-3845-437b-80bd-1ab559f1b795" style="Column header" x="350" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Otime]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="51b82572-0bfa-4c0d-b4ee-18fea1a9e1a5" style="Column header" x="400" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Advance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6f62d356-54a3-4e81-8b05-b5159e0383ce" style="Column header" x="450" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_NHIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="96891f38-592c-4c96-9ad7-921d51cd21d5" style="Column header" x="500" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_NSSF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6af65aad-cd06-45f9-9d9c-0aa5daf26afc" style="Column header" x="550" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Paye]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="03d2018b-82d3-4f14-8f58-ddd213b129f3" style="Column header" x="600" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_DO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="70754135-2680-472f-844e-9547c4bd6814" style="Column header" x="650" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Gpay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c29d530-acb9-4ed9-9ea5-2fad04331d8f" style="Column header" x="700" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Tdeductions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12931161-18f6-4c2a-899f-bc1f5fdaf556" style="Column header" x="750" y="0" width="50" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_finalpayroll_Netpay]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="10bb4dbf-fc6e-4e6e-b6eb-b689065cc4d1" style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="e619624c-14af-4fa7-ad9b-908aad07dd4b" style="Detail" x="0" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Recordcode}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="54222a8c-5c5d-4644-b559-593d36336fa2" style="Detail" x="50" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_IdNo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="5cace828-f419-42bd-b3ce-153f30c8ffdd" style="Detail" x="100" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="edb258b4-8b5d-4be7-8ef3-74db3f5405d5" style="Detail" x="150" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Basicpay}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="214cd1e8-162b-4b4a-ae5d-615094df86e9" style="Detail" x="200" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Leavepay}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="4a0ba9ed-83a1-4cc2-821d-9b339ff0bcf3" style="Detail" x="250" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Hallowance}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="cd3a2dce-b6a1-42e9-9d4f-20a9489732e0" style="Detail" x="300" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Orate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="6a2274cc-8839-4c59-84f6-55da97d174cc" style="Detail" x="350" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Otime}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="7457e4fa-715f-4d76-b3aa-593df7a2118b" style="Detail" x="400" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Advance}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="ab6116a0-dfde-48ab-93bd-686d05f2b670" style="Detail" x="450" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_NHIF}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="8564ffce-cf51-422c-b2e0-2c90f016bd3f" style="Detail" x="500" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_NSSF}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="3a3d1f03-df67-4edd-873c-22b0afaa4666" style="Detail" x="550" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Paye}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="0fa5240a-823c-42a2-b856-6a50571630ee" style="Detail" x="600" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_DO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="99c3f00e-8ce4-4b72-8cba-476f4a5e9ccd" style="Detail" x="650" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Gpay}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="b8aae865-b125-4596-9544-1f1d45d1f9f0" style="Detail" x="700" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Tdeductions}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="0c6f4a48-c49b-4c2c-99f0-d67a71926f31" style="Detail" x="750" y="0" width="50" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_finalpayroll_Netpay}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement uuid="b57ec1b6-66bd-4f8a-a8eb-b02910f9759a" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="3ee12971-1b9b-416c-b18a-031482ed96b5" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="27155e87-427c-432d-beb8-4d7539c324a5" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="63417538-95bc-4fd0-bd0f-8c3c5efc60c0" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="3b399864-bc4a-4cf4-a64f-00b463b9ed01" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

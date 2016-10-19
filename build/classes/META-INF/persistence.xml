@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="farmTechPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>farm.entity.VStoreStock</class>
+    <class>farm.entity.VStoreBatchStock</class>
+    <class>farm.entity.VMstock</class>
+    <class>farm.entity.VFarmerPayroll</class>
+    <class>farm.entity.DtUsers</class>
+    <class>farm.entity.DtUserprivileges</class>
+    <class>farm.entity.DtPurchasesAccount</class>
+    <class>farm.entity.DtDailycollection</class>
+    <class>farm.entity.DtBankAccounts</class>
+    <class>farm.entity.DtDepartment</class>
+    <class>farm.entity.DtIncomeAccount</class>
+    <class>farm.entity.DtExpenseAccount</class>
+    <class>farm.entity.DtAccountStatement</class>
+    <class>farm.entity.DtCodes</class>
+    <class>farm.entity.DtCoffeCollection</class>
+    <class>farm.entity.VCoffeeFarmerPayroll</class>
+    <class>farm.entity.FarmerCofeeSum</class>
+    <class>farm.entity.DtStoreInventory</class>
+    <class>farm.entity.DtStoreStock</class>
+    <class>farm.entity.DtFarmerdetails</class>
+    <class>farm.entity.DtSales</class>
+    <class>farm.entity.DtMstock</class>
+    <class>farm.entity.VFarmerExpenses</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_dms?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.password" value="smart123"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>

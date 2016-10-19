@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_patientdetails_test_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4ec321e7-9f8b-43ee-bfd8-b69ffd2ce7e8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientId" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     dt_lab_results.`Record_code` AS dt_lab_results_Record_code,
+     dt_lab_results.`Test_Code` AS dt_lab_results_Test_Code,
+     dt_lab_results.`Technician` AS dt_lab_results_Technician,
+     dt_lab_results.`PatientID` AS dt_lab_results_PatientID,
+     dt_lab_results.`Pnames` AS dt_lab_results_Pnames,
+     dt_lab_results.`Analyte` AS dt_lab_results_Analyte,
+     dt_lab_results.`Value` AS dt_lab_results_Value,
+     dt_lab_results.`Result_Text` AS dt_lab_results_Result_Text,
+     dt_lab_results.`Normal_Range` AS dt_lab_results_Normal_Range,
+     dt_lab_results.`Units` AS dt_lab_results_Units,
+     dt_lab_results.`Remarks` AS dt_lab_results_Remarks,
+     dt_lab_results.`Date` AS dt_lab_results_Date,
+     dt_lab_results.`Seen` AS dt_lab_results_Seen
+FROM
+     `dt_lab_results` dt_lab_results
+WHERE
+    dt_lab_results.`PatientId` = $P{patientId}
+ AND dt_lab_results.`Date` = $P{date}
+]]>
+	</queryString>
+	<field name="dt_lab_results_Record_code" class="java.lang.Integer"/>
+	<field name="dt_lab_results_Test_Code" class="java.lang.String"/>
+	<field name="dt_lab_results_Technician" class="java.lang.String"/>
+	<field name="dt_lab_results_PatientID" class="java.lang.String"/>
+	<field name="dt_lab_results_Pnames" class="java.lang.String"/>
+	<field name="dt_lab_results_Analyte" class="java.lang.String"/>
+	<field name="dt_lab_results_Value" class="java.lang.String"/>
+	<field name="dt_lab_results_Result_Text" class="java.lang.String"/>
+	<field name="dt_lab_results_Normal_Range" class="java.lang.String"/>
+	<field name="dt_lab_results_Units" class="java.lang.String"/>
+	<field name="dt_lab_results_Remarks" class="java.lang.String"/>
+	<field name="dt_lab_results_Date" class="java.lang.String"/>
+	<field name="dt_lab_results_Seen" class="java.lang.String"/>
+	<title>
+		<band height="17">
+			<staticText>
+				<reportElement uuid="8c16f609-cd7e-46f1-98dd-a70e01ad95e5" x="0" y="0" width="148" height="17" forecolor="#0066CC"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lab Tests]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="18">
+			<line>
+				<reportElement uuid="c564799c-fb68-4419-a647-df6d3e091115" x="1" y="17" width="554" height="1" forecolor="#0066FF"/>
+			</line>
+			<staticText>
+				<reportElement uuid="fd34d64b-4a74-4e29-a037-011c2e6df032" x="42" y="0" width="84" height="18" isRemoveLineWhenBlank="true" forecolor="#0066FF"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Test_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f8d4e862-ae37-4278-9e57-994ece0fbb82" x="1" y="2" width="41" height="15" forecolor="#0066FF"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rec. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b72d1c3c-446c-4f4c-9893-fb5e8e5db7d5" x="126" y="0" width="69" height="17" forecolor="#0066FF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28bc0e14-a71c-4726-8e99-b4b3ebb5aaca" x="195" y="1" width="145" height="17" forecolor="#0066FF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Result_Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fc045ac-64b7-40bd-8619-d99710c181f1" x="340" y="1" width="74" height="17" forecolor="#0066FF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Normal_Range]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7e477e3e-f4dd-491e-b58e-fbb91d028ee4" x="414" y="2" width="126" height="15" forecolor="#0066FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Physician]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="41b16178-188d-49ea-b25d-b08d3a35bfa8" x="1" y="0" width="41" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_lab_results_Record_code}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="392c8bf7-8d6d-4153-95d1-9466e1c7dafd" x="42" y="0" width="84" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_lab_results_Analyte}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="49ffe1c8-deab-47bd-be93-4bd11e5c1513" x="126" y="0" width="69" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_lab_results_Value}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0491bc20-c669-42f8-9925-bd43d5f8c83b" x="195" y="0" width="145" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_lab_results_Result_Text}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="757dfb35-78b5-4569-b529-604ab9d8504e" x="340" y="0" width="74" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_lab_results_Normal_Range}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="77ec7680-e846-495e-bad9-23d08469303f" x="414" y="0" width="126" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_lab_results_Technician}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

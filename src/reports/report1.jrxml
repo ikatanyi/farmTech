@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c88d5b41-1671-4a52-b879-1974d3a26f7f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_patientdetails.`PatientID` AS dt_patientdetails_PatientID,
+     dt_patientdetails.`Fname` AS dt_patientdetails_Fname,
+     dt_patientdetails.`Lname` AS dt_patientdetails_Lname,
+     dt_patientdetails.`DOB` AS dt_patientdetails_DOB,
+     dt_patientdetails.`Marital_Status` AS dt_patientdetails_Marital_Status,
+     dt_patientdetails.`Gender` AS dt_patientdetails_Gender,
+     dt_patientdetails.`P_address` AS dt_patientdetails_P_address,
+     dt_patientdetails.`P_city` AS dt_patientdetails_P_city,
+     dt_patientdetails.`P_state` AS dt_patientdetails_P_state,
+     dt_patientdetails.`P_zip` AS dt_patientdetails_P_zip,
+     dt_patientdetails.`P_phone` AS dt_patientdetails_P_phone,
+     dt_patientdetails.`P_Email` AS dt_patientdetails_P_Email,
+     dt_patientdetails.`MHAllergy` AS dt_patientdetails_MHAllergy,
+     dt_patientdetails.`MHBlood` AS dt_patientdetails_MHBlood,
+     dt_patientdetails.`MHEmFname` AS dt_patientdetails_MHEmFname,
+     dt_patientdetails.`MHEmLname` AS dt_patientdetails_MHEmLname,
+     dt_patientdetails.`MHAddress` AS dt_patientdetails_MHAddress,
+     dt_patientdetails.`MHcity` AS dt_patientdetails_MHcity,
+     dt_patientdetails.`MHState` AS dt_patientdetails_MHState,
+     dt_patientdetails.`MHzip` AS dt_patientdetails_MHzip,
+     dt_patientdetails.`MHphone` AS dt_patientdetails_MHphone,
+     dt_patientdetails.`MHdesc` AS dt_patientdetails_MHdesc,
+     dt_psession.`PatientId` AS dt_psession_PatientId,
+     dt_psession.`Attendant` AS dt_psession_Attendant,
+     dt_psession.`Last_Appointment` AS dt_psession_Last_Appointment,
+     dt_psession.`Next_Appointment` AS dt_psession_Next_Appointment,
+     dt_psession.`Diagnosis` AS dt_psession_Diagnosis,
+     dt_psession.`Comments` AS dt_psession_Comments,
+     dt_psession.`AttendedOn` AS dt_psession_AttendedOn
+FROM
+     `dt_patientdetails` dt_patientdetails LEFT JOIN `dt_psession` dt_psession ON dt_patientdetails.`PatientID` = dt_psession.`PatientId`
+WHERE
+     dt_patientdetails.`PatientID` = $P{patientId}]]>
+	</queryString>
+	<field name="dt_patientdetails_PatientID" class="java.lang.String"/>
+	<field name="dt_patientdetails_Fname" class="java.lang.String"/>
+	<field name="dt_patientdetails_Lname" class="java.lang.String"/>
+	<field name="dt_patientdetails_DOB" class="java.lang.String"/>
+	<field name="dt_patientdetails_Marital_Status" class="java.lang.String"/>
+	<field name="dt_patientdetails_Gender" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_address" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_city" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_state" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_zip" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_phone" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_Email" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHAllergy" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHBlood" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHEmFname" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHEmLname" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHAddress" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHcity" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHState" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHzip" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHphone" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHdesc" class="java.lang.String"/>
+	<field name="dt_psession_PatientId" class="java.lang.String"/>
+	<field name="dt_psession_Attendant" class="java.lang.String"/>
+	<field name="dt_psession_Last_Appointment" class="java.lang.String"/>
+	<field name="dt_psession_Next_Appointment" class="java.lang.String"/>
+	<field name="dt_psession_Diagnosis" class="java.lang.String"/>
+	<field name="dt_psession_Comments" class="java.lang.String"/>
+	<field name="dt_psession_AttendedOn" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="144" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c1ed7c39-d66c-4b59-aecf-a1e017c2cb15" x="12" y="10" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Patient Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0002f9aa-3c57-4264-8e85-e981ab8521e5" x="12" y="25" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="64fbfdb0-7b70-402e-a9d4-856dc2915e65" x="12" y="40" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd21331b-fac2-4ae6-8519-9f79acd2e164" x="12" y="55" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[DOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8adaddd8-7164-4ffc-b69f-ad98980788bb" x="12" y="75" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d67b320c-f7cf-436c-80ba-2dccc8724c65" x="12" y="95" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Phone ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa068cc0-4e46-4896-a47e-58f4cd453936" x="12" y="115" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

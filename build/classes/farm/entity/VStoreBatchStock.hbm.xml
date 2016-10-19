@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.VStoreBatchStock" table="v_store_batch_stock" catalog="db_dms">
+        <id name="batchno" type="java.lang.String" access="field">
+            <column name="Batch_no" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="availableStock" type="java.lang.Integer" access="field">
+            <column name="Available_Stock" />
+        </property>
+        <property name="date" type="java.lang.String" access="field">
+            <column name="Date" not-null="true" />
+        </property>
+        <property name="inStock" type="java.lang.Integer" access="field">
+            <column name="In_Stock" />
+        </property>
+        <property name="outStock" type="java.lang.Integer" access="field">
+            <column name="Out_Stock" />
+        </property>
+        <property name="productName" type="java.lang.String" access="field">
+            <column name="ProductName" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

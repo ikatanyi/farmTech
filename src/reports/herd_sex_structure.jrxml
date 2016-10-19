@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="herd_sex_structure" language="groovy" pageWidth="480" pageHeight="450" columnWidth="440" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71d65ebb-328d-4d12-b545-e56d6f4d0ce6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     case when dt_herdregister.`sex`='Male'THEN IFNULL(COUNT(dt_herdregister.`class`),0)end AS male,
+     case when dt_herdregister.`sex`='Female'THEN IFNULL(COUNT(dt_herdregister.`class`),0)end AS female,
+     dt_herdregister.`id` AS dt_herdregister_id,
+     dt_herdregister.`type` AS dt_herdregister_type,
+     dt_herdregister.`class` AS dt_herdregister_class
+FROM
+ dt_herdregister
+GROUP BY
+   dt_herdregister.`type`,dt_herdregister.`class`]]>
+	</queryString>
+	<field name="male" class="java.lang.Long"/>
+	<field name="female" class="java.lang.Long"/>
+	<field name="dt_herdregister_id" class="java.lang.Integer"/>
+	<field name="dt_herdregister_type" class="java.lang.String"/>
+	<field name="dt_herdregister_class" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="440" height="26" forecolor="#FF0033" backcolor="#FFFFFF" uuid="d36fd487-e720-4b29-87bd-78b4b52ed478"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Herd Structure]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="328" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="0" y="18" width="440" height="310" uuid="7166003f-61ce-445d-957b-bf8ad82b6603"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["male"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{dt_herdregister_class}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{male}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["female"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{dt_herdregister_class}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{female}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot labelRotation="90.0"/>
+					<itemLabel/>
+					<categoryAxisFormat labelRotation="90.0">
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<line>
+				<reportElement x="74" y="0" width="265" height="1" uuid="5e205594-c09c-4beb-bece-c4f8edfc5481"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#3366FF"/>
+				</graphicElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

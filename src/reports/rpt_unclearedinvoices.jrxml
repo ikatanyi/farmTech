@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_unclearedinvoices" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed133274-1d60-47c9-b45e-8821deb2f22b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_customerdetails.`CompanyName` AS dt_customerdetails_CompanyName,
+     v_unclearedinvoices.`Recordcode` AS v_unclearedinvoices_Recordcode,
+     v_unclearedinvoices.`Invoice_No` AS v_unclearedinvoices_Invoice_No,
+     v_unclearedinvoices.`CustomerCode` AS v_unclearedinvoices_CustomerCode,
+     v_unclearedinvoices.`Amt_Due` AS v_unclearedinvoices_Amt_Due,
+     v_unclearedinvoices.`Paid` AS v_unclearedinvoices_Paid,
+     v_unclearedinvoices.`bal` AS v_unclearedinvoices_bal
+FROM
+     `v_unclearedinvoices` v_unclearedinvoices INNER JOIN `dt_customerdetails` dt_customerdetails ON v_unclearedinvoices.`CustomerCode` = dt_customerdetails.`CustomerCode`
+WHERE
+     v_unclearedinvoices.`bal` <> 0
+GROUP BY
+     v_unclearedinvoices.`Invoice_No`]]>
+	</queryString>
+	<field name="dt_customerdetails_CompanyName" class="java.lang.String"/>
+	<field name="v_unclearedinvoices_Recordcode" class="java.lang.String"/>
+	<field name="v_unclearedinvoices_Invoice_No" class="java.lang.Integer"/>
+	<field name="v_unclearedinvoices_CustomerCode" class="java.lang.String"/>
+	<field name="v_unclearedinvoices_Amt_Due" class="java.lang.Double"/>
+	<field name="v_unclearedinvoices_Paid" class="java.lang.Double"/>
+	<field name="v_unclearedinvoices_bal" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch">
+			<staticText>
+				<reportElement uuid="70d5103a-8f4c-466c-be66-b6e064718302" x="519" y="360" width="15" height="15"/>
+				<textElement/>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e1636f13-2a78-479c-a277-9e182eb818b5" x="563" y="358" width="100" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{v_unclearedinvoices_bal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="86fc0406-244e-48af-8537-6110624905b1" x="14" y="72" width="57" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af68b372-60df-48ee-81eb-9026098b29cb" x="13" y="52" width="58" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[City :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c2d15c16-840a-49f0-a044-c74b20d9cc22" x="14" y="112" width="57" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="752d1b9d-f877-445b-aecf-c96c33da0341" x="13" y="92" width="58" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2e67dada-d039-4fd9-b1fb-f1f7cc8b409d" x="71" y="52" width="144" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{City}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e38391f-42a0-4c9d-982f-afc3c4616814" x="71" y="72" width="144" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{State}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="88ba6b38-1d4c-4beb-98a7-032d49ed200b" x="71" y="92" width="144" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="daab7a8d-b837-4f54-b02f-ac53159b5079" x="71" y="112" width="144" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{Phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e57e86f4-9acc-4b2a-91e3-cf82d68c677b" x="242" y="11" width="358" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="95836272-1c12-45ed-892d-34dd85b50f73" x="242" y="31" width="358" height="21"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b03ba7c4-9c50-4c0e-bc91-f9bfa63e1e1c" x="242" y="42" width="358" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="4ba0dbc0-ffbb-4cdd-bdf6-382b5f3f0762" positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="1600f5a5-f9b4-4c32-9a2e-c3ddcb3dd903" style="Column header" x="0" y="0" width="160" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[CompanyName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c7e294c0-c681-4f8b-b157-9af1c728e004" style="Column header" x="160" y="0" width="160" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[CustomerCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5f8fd17e-07bd-4fc5-9c7f-4cbfb2976811" style="Column header" x="320" y="0" width="160" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Invoice_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b7807881-5a49-44c2-8d52-901a06b3d2a2" style="Column header" x="480" y="0" width="120" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Amount_Due]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa432fe8-221a-422e-b7fa-83232659deb0" style="Column header" x="600" y="0" width="101" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="032241ef-71cf-435d-abe2-25fed742a0fc" x="701" y="0" width="101" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="f0eb819e-9fa2-4613-b27f-7c7c8e4b78de" style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
+				<textField>
+					<reportElement uuid="98ec69ca-a633-4625-9b5c-1caa6d7bc4fd" x="1" y="0" width="159" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_customerdetails_CompanyName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="e93d690a-8c81-47cd-96ce-e0f333d90ac8" x="160" y="0" width="160" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{v_unclearedinvoices_CustomerCode}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="04614e29-56cf-4279-87e0-66f3fcf78f60" x="320" y="2" width="160" height="13"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{v_unclearedinvoices_Invoice_No}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="a2032942-a80d-435c-b03e-72d24d391833" x="480" y="2" width="120" height="13"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{v_unclearedinvoices_Amt_Due}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="13622029-16bf-4cb8-a87f-45c62bc6d79f" x="600" y="1" width="101" height="14"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{v_unclearedinvoices_Paid}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="70d5103a-8f4c-466c-be66-b6e064718302" x="519" y="360" width="15" height="15"/>
+					<textElement/>
+					<text><![CDATA[Balance]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="e1636f13-2a78-479c-a277-9e182eb818b5" x="563" y="358" width="100" height="17"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{v_unclearedinvoices_bal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="79f327c9-99e3-4313-ad41-0f1989b7b284" x="702" y="1" width="100" height="14"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{v_unclearedinvoices_bal}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement uuid="69d88265-62d2-4615-b8c6-1932e26d908d" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="ad28966f-d1f0-473e-b9ac-d73052ffc4bc" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="809fbdb9-0ee1-4253-a343-48247433b6d7" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="15d254e1-17a2-455c-91af-241b9c4f42a3" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="ff7c077c-c575-46df-ac6a-e30e330d9360" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

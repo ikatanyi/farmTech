@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_collection_summary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5010a64-966c-4465-b8d3-fdc3aecb585b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+(SELECT SUM(e.quantity) FROM `dt_dailycollection` e LEFT JOIN `dt_farmerdetails` fd ON e.`farmerId` = fd.`farmerId` WHERE e.date = dt_dailycollection.`date` AND fd.Gender = 'Male') AS male_quantity,
+     ( SELECT SUM(m.quantity) FROM `dt_dailycollection` m LEFT JOIN `dt_farmerdetails` f ON m.`farmerId` = f.`farmerId` WHERE m.date = dt_dailycollection.`date` AND f.Gender = 'Female' ) AS female_quantity,
+     dt_dailycollection.`quantity` AS dt_dailycollection_quantity,
+     dt_farmerdetails.`center_no` AS dt_farmerdetails_center_no,
+     dt_route_A.`name` AS dt_route_A_name,
+     dt_farmerdetails.`Gender` AS dt_farmerdetails_Gender
+FROM
+     `dt_dailycollection` dt_dailycollection INNER JOIN `dt_farmerdetails` dt_farmerdetails ON dt_dailycollection.`farmerId` = dt_farmerdetails.`farmerId`
+     INNER JOIN `dt_route` dt_route_A ON dt_farmerdetails.`center_no` = dt_route_A.`center_no`]]>
+	</queryString>
+	<field name="dt_dailycollection_quantity" class="java.lang.Double"/>
+	<field name="dt_farmerdetails_center_no" class="java.lang.String"/>
+	<field name="dt_route_A_name" class="java.lang.String"/>
+	<field name="dt_farmerdetails_Gender" class="java.lang.String"/>
+	<group name="dt_farmerdetails_center_no">
+		<groupExpression><![CDATA[$F{dt_farmerdetails_center_no}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

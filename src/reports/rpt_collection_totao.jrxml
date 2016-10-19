@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_collection_totao" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="646dadaa-8e02-4d0a-b45a-1af3b2e809f1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="from_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="to_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT dt_farmerdetails.`center_no` AS dt_farmerdetails_center_no, CONCAT(dt_farmerdetails.`center_no`,":",dt_route.`name`) AS dt_route_name,  dt_dailycollection.`date` AS date,
+SUM(dt_dailycollection.`quantity`) as total
+FROM `dt_dailycollection` dt_dailycollection LEFT JOIN `dt_farmerdetails` dt_farmerdetails ON dt_dailycollection.`farmerId` = dt_farmerdetails.`farmerId` INNER JOIN `dt_route` dt_route ON dt_farmerdetails.`center_no` = dt_route.`center_no`
+WHERE
+     dt_dailycollection.`date` BETWEEN $P{from_date} AND $P{to_date} GROUP BY dt_farmerdetails.`center_no`, dt_dailycollection.`date`
+ORDER by dt_farmerdetails.`center_no`,CAST(dt_farmerdetails.`farmerId` AS UNSIGNED) ,dt_dailycollection.`date`ASC]]>
+	</queryString>
+	<field name="dt_farmerdetails_center_no" class="java.lang.String"/>
+	<field name="dt_route_name" class="java.lang.String"/>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="male_quantity" class="java.lang.Double" calculation="Sum">
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<variable name="female_quantity" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<variable name="male_quantity_total" class="java.lang.Double" resetType="Group" resetGroup="center" calculation="Sum">
+		<variableExpression><![CDATA[$V{male_quantity}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<variable name="female_quantity_total" class="java.lang.Double" resetType="Group" resetGroup="center" calculation="Sum">
+		<variableExpression><![CDATA[$V{female_quantity}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<variable name="male_female_total" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$V{male_quantity}+$V{female_quantity}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<variable name="group_total" class="java.lang.Double" resetType="Group" resetGroup="center" calculation="Sum">
+		<variableExpression><![CDATA[$V{male_quantity_total}+$V{female_quantity_total}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<variable name="male_sub_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{male_quantity}]]></variableExpression>
+	</variable>
+	<variable name="female_sub_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{male_quantity}]]></variableExpression>
+	</variable>
+	<variable name="total_1" class="java.lang.Double" resetType="Group" resetGroup="center" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<group name="center">
+		<groupExpression><![CDATA[$F{dt_farmerdetails_center_no}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField>
+					<reportElement mode="Opaque" x="1" y="0" width="554" height="13" forecolor="#FFFFFF" backcolor="#9999FF" uuid="5bb7ad98-2b96-425b-b8e4-52cb0639f821"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dt_route_name}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="16">
+				<line>
+					<reportElement x="1" y="-1" width="551" height="1" uuid="5a0fd3c6-19db-4be3-98fc-e1d05ce23edd"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#6666FF"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="31" y="0" width="100" height="16" uuid="be9574d4-c74c-4b59-879f-253925a8e747"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total:]]></text>
+				</staticText>
+				<textField pattern="###0.00">
+					<reportElement x="146" y="1" width="35" height="15" uuid="cf6ff7b4-16a3-4a6a-b019-29b4b5d7efda"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{male_quantity_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00">
+					<reportElement x="220" y="1" width="39" height="15" uuid="e51c4e8b-3a8f-416c-8e29-7dd2a705584b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{female_quantity_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00">
+					<reportElement x="313" y="0" width="60" height="16" uuid="03ed021a-dc26-4506-b8d6-58fff28a0674"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="184" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="165" width="555" height="1" uuid="f0f50099-05cf-45f9-82d7-c677a98e9541"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="146" y="152" width="25" height="14" uuid="1d986aa3-22cb-4a68-bad2-87d200602eb0"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="152" width="39" height="14" uuid="196af764-5666-454e-bdd4-ef920825587e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="152" width="115" height="14" uuid="81ac2a06-aeb9-4bf3-a25a-77b260836a3e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="151" width="60" height="15" uuid="355e393f-d687-4bca-9c78-8fdc3889fe2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="89" width="554" height="17" forecolor="#FFFFFF" backcolor="#9999FF" uuid="be7ad52f-01d0-45ee-9b22-7376870fc369"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Collection Summary]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="32" width="238" height="20" uuid="391f43bc-1a3b-4e4f-8050-00abda06ae7b"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="20" width="238" height="19" uuid="0af9d4a3-4fce-4f58-8fe2-4e71b7a2bd6d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="0" width="290" height="20" uuid="eb3c13f4-57f1-4220-80c6-b6dc76696ae4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="332" y="24" width="41" height="14" uuid="c677f4cb-d803-4ccd-95f2-6b19e48c749d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="39" width="41" height="13" uuid="6d9f558d-e7a1-4d37-ba08-0fc4c7c6e3e1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="373" y="24" width="124" height="14" uuid="5c105ac5-66f8-412f-bd15-ebc9db2718a9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{from_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="39" width="124" height="13" uuid="d256b702-70a6-46cc-9c0b-7e179b197765"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{to_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="2" width="100" height="20" uuid="4bce305f-2888-41a4-a885-1808bb0fed8f"/>
+				<text><![CDATA[total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="31" y="0" width="115" height="14" uuid="331d605c-800b-4bd7-ace0-42942c70ef7f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="13" width="551" height="1" uuid="bc67f9f3-9526-4369-b840-63ef725cfa82"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#3333FF"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="2" y="0" width="29" height="13" uuid="84616cb1-5fef-4bf7-8743-64569c698127"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="146" y="0" width="35" height="13" uuid="7c6137b6-fe4c-46bc-852e-7c43587a1156"/>
+				<subreportParameter name="centre_no">
+					<subreportParameterExpression><![CDATA[$F{dt_farmerdetails_center_no}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="date">
+					<subreportParameterExpression><![CDATA[$F{date}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="quantity" toVariable="male_quantity" calculation="Sum"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rpt_collection_totao_subreport_male.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="220" y="0" width="39" height="13" uuid="8332bc94-1bc4-42b5-8dc4-ae8830d12587"/>
+				<subreportParameter name="center_no">
+					<subreportParameterExpression><![CDATA[$F{dt_farmerdetails_center_no}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="date">
+					<subreportParameterExpression><![CDATA[$F{date}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="quantity" toVariable="female_quantity"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rpt_collection_totao_subreport1_female.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="###0.00">
+				<reportElement x="313" y="0" width="60" height="13" uuid="37cda77c-8737-40a0-bcc8-366981a6f929"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="1" width="555" height="1" uuid="c3d14ae3-5c3d-4e70-ab38-205b0730e5e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#FFFFFF" backcolor="#9999FF" uuid="b09b83f5-95e9-4153-a2ac-94ba088e6d3f"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="dd890dbe-c674-490a-ae02-6040d442a675"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="544c7ced-12a1-42b7-a604-a8ac428bb085"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="93f1ec03-9d55-4273-ac89-5c2c7427cca8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

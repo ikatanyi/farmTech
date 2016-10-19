@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_farmer_payment" language="groovy" pageWidth="330" pageHeight="500" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="290" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="925d16b0-737c-4eba-b3df-6f3a30f98baf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="farmerid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="month" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="year" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+
+(SELECT SUM(IFNULL(expense.`balance`,0.0)) FROM v_farmer_expenses expense WHERE expense.Type='STORE' AND expense.`description`='Milk' AND expense.`farmerId`=v_farmer_payroll.`farmerId` AND Month(expense.`date`)=$P{month} AND Year(expense.`date`)=$P{year}) AS STORE,
+
+(SELECT SUM(IFNULL(expense.`balance`,0.0)) FROM v_farmer_expenses expense WHERE expense.Type='A.I' AND expense.`description`='Milk'  AND expense.`farmerId`=v_farmer_payroll.`farmerId`AND Month(expense.`date`)=$P{month} AND Year(expense.`date`)=$P{year}) AS 'A.I',
+
+(SELECT SUM(IFNULL(expense.`balance`,0.0)) FROM v_farmer_expenses expense WHERE expense.Type='MEMBERSHIP' AND expense.`description`='Milk' AND expense.`farmerId`=v_farmer_payroll.`farmerId` AND Month(expense.`date`)=$P{month} AND Year(expense.`date`)=$P{year}) AS MEMBERSHIP,
+
+(SELECT SUM(IFNULL(expense.`balance`,0.0)) FROM v_farmer_expenses expense WHERE expense.Type='SHARES' AND expense.`description`='Milk'  AND expense.`farmerId`=v_farmer_payroll.`farmerId` AND Month(expense.`date`)=$P{month} AND Year(expense.`date`)=$P{year}) AS SHARES,
+
+(SELECT SUM(IFNULL(expense.`balance`,0.0)) FROM v_farmer_expenses expense WHERE expense.Type='SHARES' AND expense.`description`='Milk'  AND expense.`farmerId`=v_farmer_payroll.`farmerId` AND expense.`date`<=DATE(NOW())) AS Total_SHARES,
+
+     CONCAT(dt_farmerdetails.`Fname`," ",dt_farmerdetails.`Lname`) AS name,
+     Month(v_farmer_payroll.`date`) AS month,
+     dt_farmerdetails.`farmerId` AS farmerId,
+     dt_farmerdetails.`center_no` AS center_no,
+     dt_farmerdetails.`idno` AS idno,
+     v_farmer_payroll.`id` AS id,
+     v_farmer_payroll.`date` AS v_farmer_payroll_date,
+     last_day(v_farmer_payroll.`date`) as P_DATE,
+     v_farmer_payroll.`quantity` AS quantity,
+     v_farmer_payroll.`rate` AS rate,
+     v_farmer_payroll.`credit` AS credit
+FROM
+     `dt_farmerdetails` dt_farmerdetails INNER JOIN `v_farmer_payroll` v_farmer_payroll ON dt_farmerdetails.`farmerId` = v_farmer_payroll.`farmerId`
+
+where Month(v_farmer_payroll.`date`)=$P{month} and Year(v_farmer_payroll.`date`)=$P{year} AND
+dt_farmerdetails.`farmerId`=$P{farmerid}
+
+GROUP BY v_farmer_payroll.`farmerId`,Month(v_farmer_payroll.`date`),Year(v_farmer_payroll.`date`)
+ORDER BY CAST(dt_farmerdetails.`farmerId` AS UNSIGNED) ASC]]>
+	</queryString>
+	<field name="STORE" class="java.lang.Double"/>
+	<field name="A.I" class="java.lang.Double"/>
+	<field name="MEMBERSHIP" class="java.lang.Double"/>
+	<field name="SHARES" class="java.lang.Double"/>
+	<field name="Total_SHARES" class="java.lang.Double"/>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="month" class="java.lang.Long"/>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="center_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="v_farmer_payroll_date" class="java.sql.Date"/>
+	<field name="P_DATE" class="java.sql.Date"/>
+	<field name="quantity" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rate" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="credit" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="net" class="java.lang.String">
+		<variableExpression><![CDATA[($F{quantity}.equals( null )?0.00:$F{quantity})*($F{rate}.equals( null )?0.00:$F{rate})+($F{STORE}+$F{A.I}+$F{MEMBERSHIP}+$F{SHARES})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="10" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="81" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="32" width="238" height="20" uuid="1e8ab0b7-eb20-42e5-a3b6-dbeb9954b4bf"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="20" width="238" height="19" uuid="9c09d558-358d-46ab-a254-7c4905614183"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="290" height="20" uuid="14717872-b5d0-4b92-b753-38b4c0faa0c2"/>
+				<textElement>
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="64" width="290" height="17" forecolor="#CCCCFF" backcolor="#CCCCFF" uuid="2d4374b0-6299-458a-8900-e5ba4e614965"/>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="0" width="105" height="17" forecolor="#000000" uuid="e314ba1a-4dca-483e-be3e-abeeab6afd94"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Dairy Monthly Pay]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="119" y="0" width="57" height="17" uuid="947a8e04-0abf-45ab-bd1c-04ecf6b78048"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="55" height="20" uuid="caf910b4-14d7-442e-8e12-517a00a1f5d8"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="55" height="20" uuid="f89fc89e-f832-4299-8ae8-fb20a20efc5c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FarmerId:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="1" width="201" height="19" uuid="7893b4a3-12b8-47b3-84dd-5e09d2ec36f3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="21" width="201" height="19" uuid="447c0bf0-ed06-4bde-96c9-f0ffe45f6207"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{farmerId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="173" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="0" width="284" height="1" forecolor="#CCCCFF" uuid="3d568869-1034-4799-af8a-c4f08fc109b2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="9" width="185" height="20" uuid="fc77529f-a4d2-4860-8402-db61345edd52"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total Kgs :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="29" width="185" height="20" uuid="c93e4219-a64c-43ee-8bf5-30a9a97042ed"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Rate :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="49" width="185" height="20" uuid="eeb53bb3-d311-4489-a38b-dcef3a7ceb65"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Gross]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="193" y="9" width="97" height="20" uuid="dae58d68-c162-4762-b171-24c8e7bf47ef"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="29" width="97" height="20" uuid="ce025a97-d96f-4f68-8010-e1ee5d735d4c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="49" width="97" height="20" uuid="5a17e5d1-cd88-42ac-8f36-eb121f0c2e2a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[($F{quantity}.equals( null )?0.00:$F{quantity})*($F{rate}.equals( null )?0.00:$F{rate})]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="143" width="97" height="18" uuid="ec4cbf07-8de4-454e-aed3-bbd638a3a715"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHARES}.equals( null )?0.0:$F{SHARES}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="123" width="97" height="20" uuid="e093b7e8-96a2-40f0-87a6-5ababe1b1031"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MEMBERSHIP}.equals( null )?0.0:$F{MEMBERSHIP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="123" width="185" height="20" uuid="116940ff-0c74-4006-a6b7-2a6143e579c6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Membership :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="89" width="185" height="17" uuid="f702347a-b6e2-43a5-9303-2ac804b6bb10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Store :]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="106" width="97" height="17" uuid="d203da6b-ba5f-469b-9da0-5024b0dfd957"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{A.I}.equals( null)? 0.0:$F{A.I}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="106" width="185" height="17" uuid="28632e33-4871-4d2c-811f-0d95991bd83a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[A.I :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="143" width="185" height="18" uuid="4814775a-b2a2-4cf3-a97e-dc0bb5e06e4b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Shares :]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="89" width="97" height="17" uuid="66d35b00-8f5e-4166-b9d4-1adc1bb26d1a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{STORE}.equals( null )? 0.0:$F{STORE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="67">
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="11d8af9b-29a2-4702-8f49-b0bfa618ad6c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Net Pay :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="0" width="286" height="1" forecolor="#CCCCFF" uuid="57261c45-899d-4a98-afaf-86548f019d01"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="2" width="83" height="18" uuid="8f32ba41-bd26-401b-bddc-71d3a170852e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Deductions :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="291" height="1" uuid="94597be2-f501-4b87-a141-ea4c0cf2da15"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="###0.00">
+				<reportElement x="196" y="2" width="97" height="18" uuid="da014bb6-7c22-4b2d-97a0-e76583ca5e89"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{STORE}.equals( null )?0.00:$F{STORE})+($F{A.I}.equals( null )?0.00:$F{A.I})+($F{MEMBERSHIP}.equals( null )?0.00:$F{MEMBERSHIP})+($F{SHARES}.equals( null )?0.00:$F{SHARES})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="1" width="289" height="1" uuid="3965e711-195d-4d48-82a8-3e9ff8cc982e"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="###0.00">
+				<reportElement x="193" y="20" width="97" height="20" uuid="8a727434-6cdd-43da-96ef-ade1a73abb58"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($F{quantity}.equals( null )?0.0:$F{quantity})*($F{rate}.equals( null )?0.00:$F{rate}))+($F{STORE}.equals( null )?0.00:$F{STORE})+($F{A.I}.equals( null )?0.00:$F{A.I})+($F{MEMBERSHIP}.equals( null )?0.00:$F{MEMBERSHIP})+($F{SHARES}.equals( null )?0.00:$F{SHARES})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="50" width="70" height="17" uuid="d7e9a1e6-2f70-47e1-8d0b-fd62c751b781"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total_Shares :]]></text>
+			</staticText>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement x="69" y="50" width="80" height="15" uuid="9a18c274-75a6-4571-a00a-098081d58006"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total_SHARES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="27" width="53" height="20" uuid="8ae39d81-5be0-45ed-866f-2d8523679667"/>
+				<text><![CDATA[Printed by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="61" width="53" height="20" uuid="e2a80e13-d6c8-4c04-b9b5-5c8e08e531a5"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Signature :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="55" y="80" width="123" height="1" uuid="7f277f93-9895-4e44-b598-02874a7422da"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="198" y="61" width="60" height="20" uuid="304b4bda-3fd9-49bb-8981-09a2181fb063"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="258" y="61" width="28" height="20" uuid="8042ec3e-ab66-40a0-8aa1-137d226c2ee2"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="186" y="27" width="100" height="20" uuid="11dcdcd1-6cf3-4666-b18f-b414343a77cb"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

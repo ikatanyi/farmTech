@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_payment_receipt_sr_nxt_app" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cd4d108e-9821-41d0-aee4-c7e6374d45b0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientId" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_psession.`Next_Appointment` AS dt_psession_Next_Appointment,
+     dt_psession.`PatientId` AS dt_psession_PatientId,
+     dt_psession.`Diagnosis_No` AS dt_psession_Diagnosis_No,
+     dt_psession.`AttendedOn` AS dt_psession_AttendedOn
+FROM
+     `dt_psession` dt_psession
+WHERE
+     dt_psession.`PatientId` = $P{patientId}
+ AND dt_psession.`AttendedOn`=$P{date}
+ORDER BY
+     dt_psession.`Diagnosis_No` DESC]]>
+	</queryString>
+	<field name="dt_psession_Next_Appointment" class="java.lang.String"/>
+	<field name="dt_psession_PatientId" class="java.lang.String"/>
+	<field name="dt_psession_Diagnosis_No" class="java.lang.String"/>
+	<field name="dt_psession_AttendedOn" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="22">
+			<staticText>
+				<reportElement uuid="621f6a79-5267-443a-aaab-be95c0d6e468" x="0" y="0" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Next Appointment :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c74829ea-c1fe-4ffd-aa2a-279f1b8b5132" x="100" y="0" width="144" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_psession_Next_Appointment}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtUsers" table="dt_users">
+        <id name="idNo" type="java.lang.String" access="field">
+            <column name="IdNo" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="address" type="java.lang.String" access="field">
+            <column name="Address" not-null="true" />
+        </property>
+        <property name="date" type="java.lang.String" access="field">
+            <column name="Date" not-null="true" />
+        </property>
+        <property name="dob" type="java.lang.String" access="field">
+            <column name="DOB" not-null="true" />
+        </property>
+        <property name="email" type="java.lang.String" access="field">
+            <column name="Email" not-null="true" />
+        </property>
+        <property name="fname" type="java.lang.String" access="field">
+            <column name="Fname" not-null="true" />
+        </property>
+        <property name="gender" type="java.lang.String" access="field">
+            <column name="Gender" not-null="true" />
+        </property>
+        <property name="lname" type="java.lang.String" access="field">
+            <column name="Lname" not-null="true" />
+        </property>
+        <property name="looknFeel" type="java.lang.String" access="field">
+            <column name="Look_n_Feel" not-null="true" />
+        </property>
+        <property name="password" type="java.lang.String" access="field">
+            <column name="Password" not-null="true" />
+        </property>
+        <property name="phone" type="java.lang.String" access="field">
+            <column name="Phone" not-null="true" />
+        </property>
+        <property name="speciality" type="java.lang.String" access="field">
+            <column name="Speciality" not-null="true" />
+        </property>
+        <property name="state" type="java.lang.String" access="field">
+            <column name="State" not-null="true" />
+        </property>
+        <property name="username" type="java.lang.String" access="field">
+            <column name="Username" not-null="true" />
+        </property>
+        <one-to-one name="privileges" class="farm.entity.DtUserprivileges" access="field" cascade="all"></one-to-one>
+    </class>
+</hibernate-mapping>

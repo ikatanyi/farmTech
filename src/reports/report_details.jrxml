@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_details" language="groovy" pageWidth="597" pageHeight="842" columnWidth="557" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="af592032-0815-4104-9b54-8e8610e4ab0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="143"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\KENT\\Desktop\\ClinicMangement\\src\\classes\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_patientdetails.`PatientID` AS dt_patientdetails_PatientID,
+     dt_patientdetails.`Fname` AS dt_patientdetails_Fname,
+     dt_patientdetails.`Lname` AS dt_patientdetails_Lname,
+     dt_patientdetails.`DOB` AS dt_patientdetails_DOB,
+     dt_patientdetails.`Marital_Status` AS dt_patientdetails_Marital_Status,
+     dt_patientdetails.`Gender` AS dt_patientdetails_Gender,
+     dt_patientdetails.`P_address` AS dt_patientdetails_P_address,
+     dt_patientdetails.`P_city` AS dt_patientdetails_P_city,
+     dt_patientdetails.`P_state` AS dt_patientdetails_P_state,
+     dt_patientdetails.`P_zip` AS dt_patientdetails_P_zip,
+     dt_patientdetails.`P_phone` AS dt_patientdetails_P_phone,
+     dt_patientdetails.`P_Email` AS dt_patientdetails_P_Email,
+     dt_patientdetails.`MHAllergy` AS dt_patientdetails_MHAllergy,
+     dt_patientdetails.`MHBlood` AS dt_patientdetails_MHBlood,
+     dt_patientdetails.`MHEmFname` AS dt_patientdetails_MHEmFname,
+     dt_patientdetails.`MHEmLname` AS dt_patientdetails_MHEmLname,
+     dt_patientdetails.`MHAddress` AS dt_patientdetails_MHAddress,
+     dt_patientdetails.`MHphone` AS dt_patientdetails_MHphone,
+     dt_patientdetails.`MHdesc` AS dt_patientdetails_MHdesc,
+     dt_psession.`Diagnosis_No` AS dt_psession_Diagnosis_No,
+     dt_psession.`Attendant` AS dt_psession_Attendant,
+     dt_psession.`Last_Appointment` AS dt_psession_Last_Appointment,
+     dt_psession.`Next_Appointment` AS dt_psession_Next_Appointment,
+     dt_psession.`Diagnosis` AS dt_psession_Diagnosis,
+     dt_psession.`Comments` AS dt_psession_Comments,
+     dt_psession.`AttendedOn` AS dt_psession_AttendedOn,
+     dt_psession.`FHX` AS dt_psession_FHX,
+     dt_psession.`GTN_para` AS dt_psession_GTN_para,
+     dt_psession.`GTN_lmp` AS dt_psession_GTN_lmp,
+     dt_psession.`P_Med` AS dt_psession_P_Med,
+     dt_psession.`GTN_gdd` AS dt_psession_GTN_gdd,
+     dt_psession.`GTN_gbd` AS dt_psession_GTN_gbd,
+     dt_psession.`PA` AS dt_psession_PA,
+     dt_psession.`RS` AS dt_psession_RS,
+     dt_psession.`GT` AS dt_psession_GT,
+     dt_psession.`GVT` AS dt_psession_GVT,
+     dt_psession.`IR` AS dt_psession_IR,
+     dt_psession.`BP` AS dt_psession_BP,
+     dt_psession.`PR` AS dt_psession_PR,
+     dt_psession.`CO` AS dt_psession_CO,
+     dt_psession.`OE` AS dt_psession_OE,
+     dt_psession.`FHX` AS dt_psession_FHX,
+     dt_psession.`Treatment` AS dt_psession_Treatment
+FROM
+     `dt_patientdetails` dt_patientdetails LEFT JOIN `dt_psession`   dt_psession ON dt_patientdetails.`PatientID` = dt_psession.`PatientId`
+WHERE
+   dt_patientdetails.`PatientID`=$P{patientId}
+ORDER BY dt_psession.`Diagnosis` DESC]]>
+	</queryString>
+	<field name="dt_patientdetails_PatientID" class="java.lang.String"/>
+	<field name="dt_patientdetails_Fname" class="java.lang.String"/>
+	<field name="dt_patientdetails_Lname" class="java.lang.String"/>
+	<field name="dt_patientdetails_DOB" class="java.lang.String"/>
+	<field name="dt_patientdetails_Marital_Status" class="java.lang.String"/>
+	<field name="dt_patientdetails_Gender" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_address" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_city" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_state" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_zip" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_phone" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_Email" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHAllergy" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHBlood" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHEmFname" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHEmLname" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHAddress" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHphone" class="java.lang.String"/>
+	<field name="dt_patientdetails_MHdesc" class="java.lang.String"/>
+	<field name="dt_psession_Diagnosis_No" class="java.lang.String"/>
+	<field name="dt_psession_Attendant" class="java.lang.String"/>
+	<field name="dt_psession_Last_Appointment" class="java.lang.String"/>
+	<field name="dt_psession_Next_Appointment" class="java.lang.String"/>
+	<field name="dt_psession_Diagnosis" class="java.lang.String"/>
+	<field name="dt_psession_Comments" class="java.lang.String"/>
+	<field name="dt_psession_AttendedOn" class="java.lang.String"/>
+	<field name="dt_psession_FHX" class="java.lang.String"/>
+	<field name="dt_psession_GTN_para" class="java.lang.String"/>
+	<field name="dt_psession_GTN_lmp" class="java.lang.String"/>
+	<field name="dt_psession_P_Med" class="java.lang.String"/>
+	<field name="dt_psession_GTN_gdd" class="java.lang.String"/>
+	<field name="dt_psession_GTN_gbd" class="java.lang.String"/>
+	<field name="dt_psession_PA" class="java.lang.String"/>
+	<field name="dt_psession_RS" class="java.lang.String"/>
+	<field name="dt_psession_GT" class="java.lang.String"/>
+	<field name="dt_psession_GVT" class="java.lang.String"/>
+	<field name="dt_psession_IR" class="java.lang.String"/>
+	<field name="dt_psession_BP" class="java.lang.String"/>
+	<field name="dt_psession_PR" class="java.lang.String"/>
+	<field name="dt_psession_CO" class="java.lang.String"/>
+	<field name="dt_psession_OE" class="java.lang.String"/>
+	<field name="dt_psession_Treatment" class="java.lang.String"/>
+	<group name="dt_psession_Diagnosis_No">
+		<groupExpression><![CDATA[$F{dt_psession_Diagnosis_No}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="252" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bc1e119f-69f0-4508-918b-8058fe1478d1" x="4" y="132" width="80" height="15" forecolor="#0066FF"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6deddff4-1f85-452b-914c-5295e1e33706" x="264" y="102" width="168" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_P_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b787958d-d883-405b-9965-599d288a3b52" x="3" y="102" width="80" height="15" forecolor="#0066FF"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Id :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c4dd193f-d3c4-49c7-89f2-719920126f30" x="83" y="102" width="62" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_PatientID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="be150896-72df-4968-8f33-26d662483614" x="3" y="117" width="80" height="15" forecolor="#0066FF"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b3861d66-7165-4c58-9bfa-5fe21d70af50" x="201" y="117" width="63" height="15" forecolor="#0066FF"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="393b61a9-c12e-4ff1-aae2-497e67a65ba7" x="201" y="102" width="62" height="15" forecolor="#0066FF"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b3453627-3e39-4453-a3d4-864ce58215e3" x="83" y="117" width="62" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_DOB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a66f22e9-9287-417a-ab9a-4c0ef5f3d5b1" x="84" y="132" width="62" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_P_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="09a52018-168a-48ac-8a67-ee26306b878b" x="264" y="117" width="232" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_P_Email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3e6aeb8-7078-4e55-b977-4a541f485d92" mode="Transparent" x="4" y="159" width="42" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GUT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ec08b60e-5fdc-45e3-b99a-bf3325245f09" mode="Transparent" x="4" y="191" width="42" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pre_Med]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a642b13-41a7-487e-ba73-1a289bc9873a" mode="Transparent" x="6" y="223" width="40" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FHX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="be5a4bd9-c790-4542-afeb-831da7f4071e" x="344" y="159" width="43" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GYN_Para]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="bc345fec-2214-49bb-90f4-56d2687adcb6" x="1" y="82" width="554" height="1" forecolor="#0066FF"/>
+			</line>
+			<staticText>
+				<reportElement uuid="b83264df-d574-4a09-b203-80bf66624af1" x="344" y="191" width="43" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GYN_L.M.P:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c7c4737-2dbb-4c5a-81fc-b00444d3bb42" x="343" y="231" width="43" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GYN_GBD :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bb633386-1d9d-426a-9a0b-b6c871d080d0" x="344" y="211" width="43" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GYN_EDD :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9eed9b6d-2532-4a21-ab01-6a9e8093a2de" x="46" y="159" width="215" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_GVT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5d680971-8f5c-47a1-b372-c0570eedb851" x="46" y="191" width="218" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_P_Med}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2cf4f7e6-e5e8-4a41-8b2c-84e722b8d9ca" x="46" y="223" width="217" height="15" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_FHX}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a6394204-dbad-4862-8fb7-9678787b460c" x="386" y="159" width="162" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_GTN_para}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ed400c2-dc49-427e-be00-af3665756fc7" x="386" y="191" width="162" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_GTN_lmp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9712b738-33bd-44c0-a21c-ed9552b8855c" x="387" y="211" width="162" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_GTN_gdd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="375e2cb3-8e05-44d4-80ba-8a86a8fef503" x="387" y="231" width="162" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_GTN_gbd}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="e8c257f9-abdc-4352-8e83-1dd0aa420283" x="1" y="251" width="556" height="1" forecolor="#0066FF"/>
+			</line>
+			<textField>
+				<reportElement uuid="d23becf4-ad88-4ddd-877e-3cd1da7cd5d9" x="53" y="39" width="136" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e600b15-d401-4858-8ac8-cc7e4fb303cd" x="2" y="60" width="70" height="21" forecolor="#0066FF"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_Fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1e96ac9a-8ea0-417b-b84d-789d95a012e0" x="53" y="13" width="136" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{State}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="cb14f2af-fdbb-4a98-ba89-9ee7f2c4cf5d" x="0" y="13" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="62e8e75e-c913-4f97-9a1a-be143c1457a0" x="0" y="39" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bfb5576b-f60f-4c23-b660-6a878eccad5f" x="53" y="0" width="136" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{City}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3801f2d6-5537-4927-a4a4-a493861efa6e" x="0" y="26" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b63a040e-a734-479f-a64b-48c460fd5a96" x="194" y="36" width="275" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1e344821-775e-4165-b2cd-e7cff65f92d0" x="53" y="26" width="136" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cbfcb05b-1e79-4837-b91a-84e532dfb30c" x="194" y="20" width="275" height="16"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d0e341bc-6849-4527-9e95-64660b71a491" x="0" y="0" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[City :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="00923c33-fb92-4e15-ac25-245542eb6ea4" x="195" y="0" width="360" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9b63c2b0-9819-41a6-a055-4fd046dbfb5b" x="72" y="60" width="282" height="21" forecolor="#0066FF"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_Lname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<frame>
+				<reportElement uuid="57731837-ae40-44d9-a712-3ad48d4d6226" mode="Opaque" x="1" y="0" width="556" height="19" forecolor="#0099CC" backcolor="#CCCCCC"/>
+				<textField>
+					<reportElement uuid="69f82633-2b6c-408b-b0be-c3e00e587d91" x="71" y="0" width="211" height="19" forecolor="#0033CC"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dt_psession_Last_Appointment}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="5a477e68-52f0-4c8e-95a9-5938ca387153" x="0" y="0" width="71" height="19" forecolor="#0033CC"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Lst Apptmnt:]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="232" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="e36ebdb6-0612-468d-940f-98c45fc2570a" x="0" y="122" width="555" height="37"/>
+				<subreportParameter name="patientId">
+					<subreportParameterExpression><![CDATA[$F{dt_patientdetails_PatientID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="date">
+					<subreportParameterExpression><![CDATA[$F{dt_psession_AttendedOn}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rpt_patientdetails_med_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e818011b-7d94-4c4f-b78c-ca2cff07d7a6" x="306" y="0" width="251" height="11" forecolor="#333333"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_Comments}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="10d7ef98-a40e-4047-8fd8-e53a4fffe4ef" isPrintRepeatedValues="false" x="306" y="92" width="251" height="20" forecolor="#333333"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_OE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9821ffb-10b2-4aa0-b81d-97c3d10db523" x="2" y="39" width="29" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Invest.Results :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d0e6cb0d-e84f-49e5-995b-08699d0857b1" mode="Transparent" x="283" y="92" width="23" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[G/E :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="35fc6a5f-0bb8-4e2d-88a9-afcb073f6753" mode="Transparent" x="3" y="0" width="28" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[C/O :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e7a168d9-3a54-43f9-9634-d68764fe401d" x="1" y="72" width="52" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Treatment :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="491d97bb-842d-426b-8b0b-0e31ea87f450" x="281" y="71" width="45" height="16" forecolor="#000000"/>
+				<textElement verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Diagnosis :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6bdc14d1-97c3-402e-a0ad-dad74a8534d8" x="281" y="0" width="25" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[HPI  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="45620cf8-8666-4d29-b991-9eafe5cfc558" x="31" y="0" width="229" height="15" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_CO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f2f3a677-ba81-479c-8095-fe226d53b0c0" x="31" y="39" width="230" height="16" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_IR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d4e2f329-d6bd-4ad9-b3da-516948a9f1ec" x="53" y="71" width="207" height="21" forecolor="#333333"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_Treatment}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="e8e1a9ab-b981-44cd-90ff-21c414705ee8" x="0" y="197" width="555" height="35"/>
+				<subreportParameter name="patientId">
+					<subreportParameterExpression><![CDATA[$F{dt_patientdetails_PatientID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="date">
+					<subreportParameterExpression><![CDATA[$F{dt_psession_AttendedOn}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rpt_patientdetails_test_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bd851159-77d3-43c7-88e0-185206333144" x="326" y="72" width="231" height="15"/>
+				<textElement>
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_psession_Diagnosis}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="175" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0d4c61f4-fa32-4f34-90f5-5622dc472604" x="79" y="32" width="273" height="20" forecolor="#666666"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_MHBlood}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="36f6bd2c-617a-4a77-90e7-fb9e877a1e72" x="3" y="112" width="76" height="20"/>
+				<textElement/>
+				<text><![CDATA[Printed On :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4e836a43-993f-4f14-bc98-c738690ad592" x="83" y="0" width="382" height="17" forecolor="#666666"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_MHAllergy}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="d2e32594-c739-49fd-b444-93044923a321" x="79" y="112" width="123" height="20" forecolor="#666666"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="31556d82-611b-48f1-a553-451e8667d2ba" x="3" y="52" width="167" height="20"/>
+				<textElement/>
+				<text><![CDATA[InCase Of Emergergency Contact :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ac2d385c-7950-4290-96f1-91b3b139fdb7" x="103" y="72" width="249" height="20" forecolor="#666666"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_MHphone}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fe7326ea-2ed6-4774-98b6-0c797ff13a31" x="3" y="72" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Emergency Phone:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d353c338-f8f7-4346-a963-10193215af29" x="3" y="0" width="80" height="17"/>
+				<textElement/>
+				<text><![CDATA[Allergy :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7658ce27-0352-4c33-a4de-c5b48827aaa3" x="3" y="32" width="76" height="20"/>
+				<textElement/>
+				<text><![CDATA[Blood Group :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="37ed7608-641f-4af0-aa7e-ba89d89f9eab" x="170" y="52" width="80" height="20" forecolor="#666666"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_MHEmFname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5fdf81b4-81c6-44cb-8f3c-616a14a955ef" x="252" y="52" width="177" height="20" forecolor="#666666"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dt_patientdetails_MHEmLname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

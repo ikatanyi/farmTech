@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.VStoreStock" table="v_store_stock" catalog="db_dms">
+        <id name="productName" type="java.lang.String" access="field">
+            <column name="ProductName" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="availableStock" type="integer" access="field">
+            <column name="Available_Stock" />
+        </property>
+        <property name="inStock" type="integer" access="field">
+            <column name="In_Stock" />
+        </property>
+        <property name="outStock" type="integer" access="field">
+            <column name="Out_Stock" />
+        </property>
+    </class>
+</hibernate-mapping>

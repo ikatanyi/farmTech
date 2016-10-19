@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtConstants" table="dt_constants" catalog="db_dms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="rate" type="double">
+            <column name="rate" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="saleRate" type="double">
+            <column name="sale_rate" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="maxLimitLoan" type="double">
+            <column name="max_limit_loan" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="maxLimitCredit" type="double">
+            <column name="max_limit_credit" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="date" type="string">
+            <column name="date" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

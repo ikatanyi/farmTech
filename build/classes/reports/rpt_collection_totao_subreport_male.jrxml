@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_collection_totao_subreport_male" language="groovy" pageWidth="555" pageHeight="200" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e3b98376-c882-430e-849a-60a82d65befa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="centre_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sum(e.quantity) AS quantity
+FROM
+     `dt_dailycollection` e INNER JOIN `dt_farmerdetails` fd ON e.`farmerId` = fd.`farmerId`
+WHERE
+ fd.Gender = 'Male' AND e.date=$P{date} AND fd.`center_no`=$P{centre_no}]]>
+	</queryString>
+	<field name="quantity" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="quantity" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.00]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="51" height="16" uuid="32cb5c9a-7cf5-440d-9309-64cec1e94ce3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}.equals( null )?0.00:$F{quantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

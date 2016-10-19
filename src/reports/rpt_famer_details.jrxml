@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_famer_details" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b9e72ff-018d-4a5d-bf11-a02febf428f5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="60"/>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="farmerid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat(dt_farmerdetails.`Fname`,' ',dt_farmerdetails.`Lname`) AS name,
+     concat(dt_farmerdetails.`SpouseFname`,' ',dt_farmerdetails.`SpouseLname`) AS Spouse_name,
+     dt_farmerdetails.`farmerId` AS farmerId,
+     dt_farmerdetails.`idno` AS idno,
+     dt_farmerdetails.`DOB` AS DOB,
+     dt_farmerdetails.`Marital_Status` AS Marital_Status,
+     dt_farmerdetails.`Gender` AS Gender,
+     dt_farmerdetails.`P_address` AS address,
+     dt_farmerdetails.`P_city` AS city,
+     dt_farmerdetails.`P_state` AS state,
+     dt_farmerdetails.`P_zip` AS zip,
+     dt_farmerdetails.`P_phone` AS phone,
+     dt_farmerdetails.`P_Email` AS Email,
+     dt_farmerdetails.`SpouseID` AS SpouseID,
+     dt_farmerdetails.`payment_type` AS payment_type,
+     dt_farmerdetails.`bank_name` AS bank_name,
+     dt_farmerdetails.`account_no` AS account_no,
+     dt_farmerdetails.`branch` AS branch,
+     dt_farmerdetails.`service_provider` AS service_provider,
+     dt_farmerdetails.`mobile_no` AS mobile_no,
+     dt_farmerdetails.`RegDate` AS RegDate
+FROM
+     `dt_farmerdetails` dt_farmerdetails
+where
+     dt_farmerdetails.`farmerId`=$P{farmerid}]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Spouse_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DOB" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Marital_Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="zip" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="Email" class="java.lang.String"/>
+	<field name="SpouseID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="payment_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bank_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="account_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="branch" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="service_provider" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mobile_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RegDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="farmerId">
+		<groupExpression><![CDATA[$F{farmerId}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="108" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3f6117a8-0bbe-4372-8d38-82bbf87dfba5" x="201" y="23" width="315" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="08d8596a-7051-4edc-a341-d5b12de3a451" x="53" y="22" width="123" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{State}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="23233be2-1660-4ad3-bed6-eb97b1e975f7" x="0" y="36" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e0988810-7d03-4a9c-a123-6da99d3eee70" x="186" y="3" width="361" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f316cb38-d7b4-4c16-a776-2f3db45f8a32" x="201" y="35" width="315" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="390f4dcd-7485-42df-8fa6-38dae93b8d1d" x="53" y="49" width="123" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Phone}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a9acac7f-5943-47e1-9be9-2bd9240c8d1d" x="0" y="23" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="be0ec1f4-718b-4a8c-98d2-4f1cac768a76" x="53" y="36" width="123" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Address}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="640fc908-5de3-4396-b493-c627e5d1ac7f" mode="Opaque" x="0" y="79" width="555" height="24" forecolor="#CCCCFF" backcolor="#CCCCFF"/>
+				<staticText>
+					<reportElement uuid="40df4ca7-0c74-4c12-b172-6233b3d6c9ed" mode="Transparent" x="0" y="0" width="99" height="24" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Farmer Details:]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="1015709c-3268-4447-9c5a-7aa09421b289" x="101" y="4" width="297" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement uuid="a93eebc7-16a1-4014-a056-a69c47d71f6d" x="0" y="49" width="53" height="13"/>
+				<textElement/>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="363" splitType="Stretch">
+			<textField>
+				<reportElement uuid="683c8fa7-f3b7-43d8-9975-62cbd5626f75" x="41" y="208" width="251" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Spouse_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c92393e0-be1b-4807-ac6a-39eced0102d8" x="75" y="43" width="142" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{farmerId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ea9453aa-8b41-489e-99f5-e17bf1b88fb2" x="75" y="63" width="142" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ab77dac-7646-440a-a22d-75ced7515136" x="75" y="83" width="142" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{DOB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6b5be2ea-b0b9-408c-89d5-626edecf9609" x="75" y="103" width="142" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Marital_Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f69893cf-5a6c-4204-a88a-f9f412f164b8" x="398" y="43" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="79dcf1ab-f539-4868-88a4-1fc32a0a5c7f" x="398" y="63" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d589879b-851d-4168-9d2e-060b40daab48" x="398" y="83" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8fb13be9-224a-4ef8-b29e-76e3afeb9d6e" x="398" y="103" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{zip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8df6ccd0-97c4-4c04-88ea-c6471e5bdf68" x="398" y="123" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="177f6763-0458-42a4-a123-b77448bfee36" x="398" y="143" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e3d3af5a-fd6b-4fab-890e-a44608b4223a" x="41" y="228" width="251" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{SpouseID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a37c9a1e-e4fb-4ea6-8d8f-a94299d379a2" x="102" y="262" width="191" height="20" forecolor="#0000FF"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="68348639-991a-437e-abbf-205c9d47cd78" x="75" y="298" width="178" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{bank_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="af293671-974b-4a6a-9c6a-fcccf07143fd" x="75" y="318" width="178" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{account_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d6ad689d-f658-4b8f-ac4a-c9cc81fb2eec" x="75" y="338" width="178" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{branch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa8cc375-8c1c-4d69-822e-dae99ebe0e58" x="384" y="298" width="150" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{service_provider}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6e648add-c825-4ed3-afb4-dcbd7285728a" x="384" y="318" width="150" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mobile_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d23893ce-6c68-40a6-94a7-1fe96beee5f5" x="75" y="143" width="142" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{RegDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="88d8d1cc-0db3-470a-91ff-5217dafb2910" x="1" y="43" width="74" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FarmerId :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c4298bc3-ce47-43fa-b8f8-7a206fb375e6" x="1" y="63" width="74" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[idno :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1fdbe78a-ceea-4a28-bf84-c22705949e7a" x="1" y="83" width="74" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff38418b-1062-460e-b674-ac6037bc2edc" x="1" y="103" width="74" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marital_Status :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="743558de-59a7-46f7-81f7-c9171e67b7c9" x="1" y="123" width="74" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gender :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ff6691ee-ec96-4857-9794-f86a3fe6bad0" x="75" y="123" width="142" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Gender}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c9288919-90f3-4579-98cd-a596e7aedf43" x="335" y="43" width="63" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd73604d-4220-4270-b33d-73b623299ed5" x="335" y="63" width="63" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[City :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="994a376a-35d5-421e-84c5-3311d13e5243" x="335" y="83" width="63" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9890310-8c3d-46d3-9f63-0e2f3ff6563e" x="335" y="103" width="63" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zip :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="813146c9-2727-4c97-93e3-cfcb259a740e" x="335" y="123" width="63" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3172386e-5a9c-45cf-b78f-9af89248a522" x="335" y="143" width="63" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12234194-c709-49c0-95a5-af0254e92fe4" x="1" y="175" width="215" height="20" forecolor="#0000FF"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Next of Kin :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91fe6b6e-322b-4e50-bb49-796366747c36" x="0" y="228" width="41" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da287d02-67d3-46aa-9412-82c543b08476" mode="Transparent" x="1" y="262" width="101" height="20" forecolor="#0000FF"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment_Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e40cf8a0-5d4e-4850-b106-66386422146b" x="0" y="298" width="75" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bank_name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c57c0bd-1aea-41da-b245-1aefca284a04" x="0" y="318" width="75" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Account_no :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="00ad7691-4714-406f-a0d5-fd2842644fd5" x="0" y="338" width="75" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Branch :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="351dc93f-59d4-49dd-a0ba-3aad0d599196" x="292" y="298" width="92" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Service_provider]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="256cbfcc-10bb-4b54-89ff-3998ee55eb5a" x="292" y="318" width="92" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mobile_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="496eabed-4e17-45e5-b07d-7f292daa4c88" x="1" y="143" width="74" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Joined Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0561b100-3701-4344-a0d2-945791af103f" x="1" y="208" width="40" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="411b353c-f785-4c33-9cbe-5574fd3bfca4" x="1" y="12" width="100" height="20" forecolor="#0000FF"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Personal Details :]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b411bc85-cf6b-48c3-9f0f-b34986a4b7de" x="1" y="282" width="554" height="1" forecolor="#0000FF"/>
+			</line>
+			<line>
+				<reportElement uuid="a68fe85f-2133-4541-b678-1c5b826179bf" x="2" y="196" width="554" height="1" forecolor="#0000FF"/>
+			</line>
+			<line>
+				<reportElement uuid="076b3b17-0873-4730-af7a-036071f96982" x="1" y="31" width="554" height="1" forecolor="#0000FF"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4d55b1be-132f-4cd2-b72c-7036d820cda3" x="2" y="53" width="73" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="78fd3819-cbde-41ce-a25a-9a6590bf82c6" x="53" y="53" width="186" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eda22e18-8a7d-48d0-b32f-2771a8556d83" x="436" y="53" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="29314235-6d6d-4fd0-b5db-e27b45589252" x="516" y="53" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9e1daa5-8d4b-4b6a-8cc4-d12d6fa8c32e" x="253" y="23" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

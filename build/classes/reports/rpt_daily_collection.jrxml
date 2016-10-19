@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_daily_collection" language="groovy" pageWidth="950" pageHeight="842" columnWidth="910" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f5960e87-ca5a-42f5-a9b2-afb05d4a7e07">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="290"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="from_date" class="java.util.Date"/>
+	<parameter name="to_date" class="java.util.Date"/>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="farmerid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat(dt_farmerdetails.`Fname`,'',dt_farmerdetails.`Lname`) AS name,
+     dt_dailycollection.`id` AS id,     concat(Month(dt_dailycollection.`date`),'-',Year(dt_dailycollection.`date`)) AS date,
+     dt_dailycollection.`quantity` AS quantity,
+     dt_dailycollection.`session` AS session,
+     dt_dailycollection.`attendant` AS attendant,
+     dt_dailycollection.`rate` AS rate,
+     dt_farmerdetails.`farmerId` AS farmerId,
+     dt_farmerdetails.`center_no` AS center_no,
+     dt_farmerdetails.`Fname` AS dt_farmerdetails_Fname,
+     dt_farmerdetails.`Lname` AS dt_farmerdetails_Lname
+FROM
+     `dt_dailycollection` dt_dailycollection right JOIN `dt_farmerdetails` dt_farmerdetails ON dt_dailycollection.`farmerId` = dt_farmerdetails.`farmerId`
+where
+  dt_dailycollection.`date` between $P{from_date} and $P{to_date}
+GROUP BY
+   dt_dailycollection.`farmerId` ,concat(Month(dt_dailycollection.`date`),'-',Year(dt_dailycollection.`date`))
+
+order by dt_dailycollection.`farmerId` asc,dt_dailycollection.`date` desc
+]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quantity" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="session" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="attendant" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rate" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="center_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_farmerdetails_Fname" class="java.lang.String"/>
+	<field name="dt_farmerdetails_Lname" class="java.lang.String"/>
+	<variable name="quantity_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+	</variable>
+	<group name="farmerId">
+		<groupExpression><![CDATA[$F{farmerId}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="96" splitType="Stretch">
+			<frame>
+				<reportElement uuid="c73188a8-39d2-4f94-906d-cfdecc8f9c8b" mode="Opaque" x="1" y="70" width="909" height="24" forecolor="#CCCCFF" backcolor="#CCCCFF"/>
+				<staticText>
+					<reportElement uuid="3c53bc1a-45ed-4f92-9141-a7bd96b5de11" mode="Transparent" x="0" y="0" width="114" height="24" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Farmer Collection:]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement uuid="d5a0e37a-8dff-4d63-80fa-2a4dd9a4f3c9" x="57" y="42" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2e156e57-3333-4d68-93f0-6d9088c2a10a" x="57" y="29" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c647d2a-6107-412a-bb37-1a2e737d62b9" x="216" y="35" width="312" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Web}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4af6868e-0473-48e3-b992-872ba11330d3" x="4" y="29" width="50" height="13"/>
+				<textElement/>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4f9aca1c-2229-4641-812b-afb812dce5f1" x="57" y="3" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{City}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56d97ee0-085e-4f02-9575-8168d56d9f8b" x="198" y="3" width="358" height="20"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CompanyName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="52009dd5-36aa-4bc4-8984-38b84eff86b0" x="4" y="16" width="50" height="13"/>
+				<textElement/>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2ba20a0f-8a8c-4e49-a3a0-907bf924f73c" x="4" y="3" width="50" height="13"/>
+				<textElement/>
+				<text><![CDATA[City :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8f675a67-e252-47d1-bd7e-6ee378c0eb51" x="4" y="42" width="50" height="13"/>
+				<textElement/>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d715d600-cce4-4a83-b833-37b2bad4bf89" x="57" y="15" width="120" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{State}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d654ce4d-a7e2-463a-b43d-cc0262acc6d8" x="216" y="23" width="312" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e490243b-338c-4d73-bde3-d23b4f6e56c9" x="49" y="3" width="19" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a5edcf6d-3d75-48b8-98fd-3d1941301c41" x="68" y="3" width="99" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e5c3852-2e37-4937-87bd-08741b1f67d4" x="219" y="5" width="740" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1       2       3      4     5     6     7     8     9     10     11     12     13     15     16     17     18     19     20     21     22     23     24     25     26     27     28     29     30]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e748b4bf-c105-4c9e-9a91-88d0d3199ef3" x="191" y="5" width="28" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb21b482-279f-4f0f-b07e-3cbce33dbefe" x="167" y="5" width="24" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3070a2da-fcbd-42dd-af75-be987213214d" x="0" y="3" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c26eb70a-d83d-4b02-b8ec-997dbb1265b0" x="49" y="2" width="19" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{farmerId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="87d4c09d-b1f7-407a-a788-48fe8a98238e" x="68" y="2" width="99" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4a261a0a-c39f-450f-9e85-bde71dae16f8" x="191" y="0" width="28" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c7e37015-aba0-4f9a-9bb4-45fe18f0191b" x="167" y="2" width="24" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{center_no}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="a038626b-df2a-4dc3-b705-00d75f317cef" x="219" y="0" width="740" height="20" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="date">
+					<subreportParameterExpression><![CDATA[$F{date}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="farmerid">
+					<subreportParameterExpression><![CDATA[$F{farmerId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rpt_daily_collection_AM_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="185cfd1d-e6f3-42f6-9d4b-21ffba789ea1" x="0" y="2" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="01777439-c060-49f8-b533-5d8ce17f41e8" x="1" y="23" width="958" height="1" forecolor="#9999FF"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f1055e9a-cb74-49bc-94e9-0e9ac3225bf6" x="269" y="0" width="47" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{quantity_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4bbe4b89-e6c7-4b96-9cb3-0f8b604bc9f9" x="144" y="0" width="100" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="de612d83-bfbf-4d36-b3d9-a62e4d5885ad" x="205" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="03bbabf2-9b75-4895-88ee-453a25733ac4" x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32d58607-fee5-4044-92d8-3cde296b9a68" x="437" y="34" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="152719c5-82e6-40b8-87c0-9d2a49fc3bd4" x="517" y="34" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

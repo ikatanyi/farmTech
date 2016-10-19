@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3335dc23-c524-4b09-b5c1-e24bd652bdfd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CompanyName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Email" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Phone" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="State" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Web" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="City" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_patientdetails.`PatientID` AS dt_patientdetails_PatientID,
+     dt_patientdetails.`Fname` AS dt_patientdetails_Fname,
+     dt_patientdetails.`Lname` AS dt_patientdetails_Lname,
+     dt_patientdetails.`DOB` AS dt_patientdetails_DOB,
+     dt_patientdetails.`Marital_Status` AS t_patientdetails_Marital_Status,
+     dt_patientdetails.`Gender` AS dt_patientdetails_Gender,
+     dt_patientdetails.`P_address` AS dt_patientdetails_P_address,
+     dt_patientdetails.`P_city` AS dt_patientdetails_P_city,
+     dt_patientdetails.`P_state` AS dt_patientdetails_P_state,
+     dt_patientdetails.`P_zip` AS dt_patientdetails_P_zip,
+     dt_patientdetails.`P_phone` AS dt_patientdetails_P_phone,
+     dt_patientdetails.`P_Email` AS dt_patientdetails_P_Email,
+     dt_payment.`ServiceRendered` AS dt_payment_ServiceRendered,
+     dt_payment.`Debit` AS dt_payment_Debit,
+     dt_payment.`Credit` AS dt_payment_Credit,
+     dt_payment.`Record_code` AS dt_payment_Record_code,
+     dt_payment.`Date` AS dt_payment_Date
+FROM
+     `dt_payment` dt_payment INNER JOIN `dt_patientdetails` dt_patientdetails ON dt_payment.`PatientId` = dt_patientdetails.`PatientID`
+WHERE
+     dt_patientdetails.`PatientID` = 96/00]]>
+	</queryString>
+	<field name="dt_patientdetails_PatientID" class="java.lang.String"/>
+	<field name="dt_patientdetails_Fname" class="java.lang.String"/>
+	<field name="dt_patientdetails_Lname" class="java.lang.String"/>
+	<field name="dt_patientdetails_DOB" class="java.lang.String"/>
+	<field name="t_patientdetails_Marital_Status" class="java.lang.String"/>
+	<field name="dt_patientdetails_Gender" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_address" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_city" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_state" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_zip" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_phone" class="java.lang.String"/>
+	<field name="dt_patientdetails_P_Email" class="java.lang.String"/>
+	<field name="dt_payment_ServiceRendered" class="java.lang.String"/>
+	<field name="dt_payment_Debit" class="java.lang.Double"/>
+	<field name="dt_payment_Credit" class="java.lang.Double"/>
+	<field name="dt_payment_Record_code" class="java.lang.Integer"/>
+	<field name="dt_payment_Date" class="java.lang.String"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="83f42e63-88af-42b0-afb9-262ae8a1f44a" x="0" y="306" width="553" height="334"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5e7898d2-62c9-4d18-8810-e9e16febe370" x="0" y="306" width="89" height="334"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="74a834c9-9114-4adb-9eed-9d5a409a73c2" x="453" y="306" width="100" height="334"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c3436e24-af20-4aec-899e-56d54f5c9796" x="354" y="306" width="99" height="334"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch">
+			<elementGroup>
+				<rectangle>
+					<reportElement uuid="a0860aa9-adb3-431d-b4b4-ff75cafb2a09" x="393" y="49" width="80" height="20"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="a0860aa9-adb3-431d-b4b4-ff75cafb2a09" x="473" y="49" width="80" height="20"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="74f0347b-1aab-4fb6-a9f5-d17d54644946" x="393" y="69" width="80" height="20"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="74f0347b-1aab-4fb6-a9f5-d17d54644946" x="473" y="69" width="80" height="20"/>
+				</rectangle>
+			</elementGroup>
+			<staticText>
+				<reportElement uuid="4a1c9cf5-41c5-4b58-97a1-a44e5633d8ea" x="453" y="14" width="100" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f82c558-cf5f-4f57-a16f-8c7c04c44c24" x="393" y="49" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="317c8507-5942-4ff8-90e4-34f184718873" x="473" y="49" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Invoice #]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="cb482b48-f334-4ae5-9c39-57466b477e34" x="393" y="69" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="112" splitType="Stretch">
+			<line>
+				<reportElement uuid="673fc6a4-b360-4799-9b67-c8776e5ebba1" positionType="Float" mode="Transparent" x="53" y="0" width="1" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement uuid="6d8e13c2-febd-4580-bf5d-ca485cf9a2e2" x="26" y="11" width="243" height="91"/>
+			</rectangle>
+			<line>
+				<reportElement uuid="40a3eaa9-e61b-4f9f-8db3-3ff429faa9c0" x="26" y="33" width="243" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="7f360ff5-89a8-49f5-ab49-880aabf216d5" x="26" y="11" width="243" height="23"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[   Bill To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f8236373-9812-4bba-ab11-10466b4923fd" x="413" y="14" width="60" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Delivery No .]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="81" splitType="Stretch">
+			<elementGroup>
+				<rectangle>
+					<reportElement uuid="24a60db0-54fd-4a5e-b270-5280ebc4b310" x="338" y="23" width="101" height="38"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="830abc58-0d44-49e2-bbd7-e45a7c18d30d" x="439" y="23" width="114" height="38"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="1a9f5e30-5e4a-4fd8-89a9-b458188f5fe5" x="338" y="0" width="101" height="23"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="300d9659-2e64-47c3-9d84-e00c54929306" x="439" y="0" width="114" height="23"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="aa3c502b-6e1c-49ae-8a63-2b2206336683" x="237" y="23" width="101" height="38"/>
+				</rectangle>
+				<rectangle>
+					<reportElement uuid="6544577f-6f44-440f-9805-3ae7d2bb5bbb" x="237" y="0" width="101" height="23"/>
+				</rectangle>
+				<staticText>
+					<reportElement uuid="50a643b2-c82d-4b16-b571-393ce9698dc4" x="238" y="0" width="100" height="23"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[P.O.No.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="20ac72e8-c9e4-4438-a751-46498f50ebca" x="339" y="0" width="100" height="23"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Terms]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="67666113-95ff-41a6-bd9b-fee30d1b7a91" x="439" y="0" width="114" height="23"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Project]]></text>
+				</staticText>
+			</elementGroup>
+			<rectangle>
+				<reportElement uuid="0391a2f4-845e-4281-81f9-5bb5633b670e" x="453" y="61" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b45ae2e3-85c2-4136-9940-b572adb44b71" x="353" y="61" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7ef777dc-d9c4-49e7-83db-77d5096f6d27" x="89" y="61" width="264" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="240c0310-88ae-4514-beac-9b66aa5d6aae" x="0" y="61" width="89" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="195385e0-e6e3-46dd-a331-81d5856276a4" x="0" y="61" width="89" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="116edb2e-5428-45e2-bdc4-db6211f6657a" x="353" y="61" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2293d2a-b025-49eb-9941-f8fa297521d6" x="453" y="61" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="01284c4d-d8d2-41eb-b217-9338b1abecf4" x="89" y="61" width="264" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<elementGroup/>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="34">
+			<rectangle>
+				<reportElement uuid="25054529-2df2-4847-9a9d-e4e472ced448" x="0" y="0" width="364" height="34"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6ca04ed8-d620-47c5-907c-5c1f14b6a31e" x="364" y="0" width="189" height="34"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6a77d9b8-0d84-4150-bcb4-b6293361f5ae" x="364" y="0" width="89" height="34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2b53328d-43ea-4997-807d-202ae74c4743" x="353" y="51" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Bal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a630dcf3-dd50-46f2-963a-cb84211af2b1" x="353" y="11" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Amount Due ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9f6d17e-19ef-4175-98ae-a6efcd621d27" x="353" y="31" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Paid]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

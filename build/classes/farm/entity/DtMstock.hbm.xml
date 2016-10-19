@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtMstock" table="dt_mstock" catalog="db_dms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="date" type="string">
+            <column name="date" length="20" not-null="true" />
+        </property>
+        <property name="descriprion" type="string">
+            <column name="descriprion" length="100" not-null="true" />
+        </property>
+        <property name="companyId" type="int">
+            <column name="company_id" not-null="true" />
+        </property>
+        <property name="debit" type="double">
+            <column name="debit" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="credit" type="double">
+            <column name="credit" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="userid" type="string">
+            <column name="userid" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

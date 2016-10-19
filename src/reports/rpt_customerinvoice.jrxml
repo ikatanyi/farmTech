@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_customerinvoice" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3d6ba14-9955-4807-b1aa-8b95a02af733">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     *,
+     SUM(Debit) AS debit,
+     SUM(Credit) AS credit,
+     dt_debtorsaccount.`Invoice_No` AS dt_debtorsaccount_Invoice_No,
+     dt_debtorsaccount.`CustomerCode` AS dt_debtorsaccount_CustomerCode,
+     dt_debtorsaccount.`Debit` AS dt_debtorsaccount_Debit,
+     dt_debtorsaccount.`Credit` AS dt_debtorsaccount_Credit
+FROM
+     `dt_debtorsaccount` dt_debtorsaccount
+WHERE
+     debit <> credit
+GROUP BY
+     Invoice_No]]>
+	</queryString>
+	<field name="CustomerCode" class="java.lang.String"/>
+	<field name="dt_debtorsaccount_Invoice_No" class="java.lang.Integer"/>
+	<field name="Invoice_No" class="java.lang.Integer"/>
+	<field name="Debit" class="java.lang.Float"/>
+	<field name="Credit" class="java.lang.Float"/>
+	<field name="debit" class="java.lang.Double"/>
+	<field name="credit" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement uuid="e0182bc4-3e00-4a16-96bb-dd94851c6624" x="0" y="0" width="164" height="126"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="2701a8e3-7122-4c67-a164-bafbaca42848" style="Title" x="270" y="0" width="263" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="be4445d4-037e-4ef7-a8ff-8a9bd3f45349" style="SubTitle" x="303" y="62" width="196" height="22"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14c21af6-820b-493e-a63c-78ffb53f0f1a" x="172" y="94" width="383" height="42"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="5f51245d-dcaf-4ef5-9126-ad00864c1c30" x="633" y="-73" width="219" height="209"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="b3b046e1-b81d-49c1-ad4b-4cf20f40ccf7" positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="4c2deedf-0915-4482-bd7f-67e4d3d262ea" style="Column header" x="0" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[CustomerCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df2a74f0-ccf2-40a0-b21f-854f52258b8b" style="Column header" x="114" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[dt_debtorsaccount_Invoice_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd9d6b45-e0d5-4166-83ab-d094e3e0519b" style="Column header" x="228" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Invoice_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f55721a7-e9ac-4bce-b914-17d4b0cd82de" style="Column header" x="342" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Debit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="627fd3db-9e57-4307-8869-0f739a37a20a" style="Column header" x="456" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Credit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="67d25878-0716-4ad1-8515-45bfa67ef582" style="Column header" x="570" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[debit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="61117535-e2a1-498a-93d7-a2d866213ebe" style="Column header" x="684" y="0" width="114" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[credit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="a792c6c6-6514-4354-a22f-426fab6d4d3c" style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="0fae4302-84bb-43cd-9e2f-fec52bfcd2cf" style="Detail" x="0" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{CustomerCode}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="1369813c-c808-426d-8459-1234187566e4" style="Detail" x="114" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{dt_debtorsaccount_Invoice_No}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="f0568d09-0bc3-4e4d-86a0-f52c4887d28b" style="Detail" x="228" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Invoice_No}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="c403aebd-7355-4500-a682-6d842698ea43" style="Detail" x="342" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Debit}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="f0655cd1-1dfb-4db5-88d4-51ca610798c5" style="Detail" x="456" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Credit}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="f79cac60-8f4e-45a5-b2a5-f492020facb6" style="Detail" x="570" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="c3630b12-2866-4fc3-9639-917eb895f74c" style="Detail" x="684" y="0" width="114" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement uuid="51696151-61ea-477b-bd1e-a5df89f99ffc" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="4cdd5622-ae59-4791-9bd5-7caab46a19c9" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="02006286-c5eb-4dca-92a0-d87cad82ae41" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="f7792edc-22ec-45fc-aac7-b16a261483eb" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="14ee6db7-7ea7-4170-b996-875569c698cc" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

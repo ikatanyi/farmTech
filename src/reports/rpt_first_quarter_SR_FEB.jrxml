@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_first_quarter_SR_FEB" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3e6f0a1f-c10f-40e4-a686-d985d8f83e38">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="year" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="farmerid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_dailycollection.`farmerId` AS dt_dailycollection_farmerId,
+     dt_dailycollection.`date` AS dt_dailycollection_date,
+    SUM( dt_dailycollection.`quantity`) AS quantity
+FROM
+     `dt_dailycollection` dt_dailycollection
+WHERE
+     ($P{farmerid}='' OR dt_dailycollection.`farmerId`=$P{farmerid}) AND MONTH( dt_dailycollection.`date`)=2 and YEAR( dt_dailycollection.`date`)=$P{year}]]>
+	</queryString>
+	<field name="dt_dailycollection_farmerId" class="java.lang.String"/>
+	<field name="dt_dailycollection_date" class="java.sql.Date"/>
+	<field name="quantity" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField pattern="###0.00">
+				<reportElement uuid="9efab212-4819-4faf-abbe-d92de349b102" x="0" y="0" width="82" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}.equals( null )?0.00:$F{quantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

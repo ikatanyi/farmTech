@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_farmer_daily_collection" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e39d72cd-56f8-4821-b03c-5b71f572ee8e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="farmerid" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="from_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="to_date" class="java.util.Date"/>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_dailycollection.`id` AS id,
+     dt_dailycollection.`date` AS date,
+     dt_dailycollection.`farmerId` AS farmerId,
+     max(case when dt_dailycollection.`session`='AM' then      IFNULL(dt_dailycollection.`quantity`,0.0) end) as am,
+max(case when dt_dailycollection.`session`='PM' then IF(dt_dailycollection.`quantity`='null',0.0,dt_dailycollection.`quantity`) end) AS pm,
+     dt_dailycollection.`water` AS water,
+     dt_dailycollection.`snf` AS snf,
+     dt_dailycollection.`proteins` AS proteins,
+     dt_dailycollection.`session` AS session,
+     dt_dailycollection.`attendant` AS attendant,
+     dt_dailycollection.`rate` AS rate,
+     dt_dailycollection.`fat` AS fat,
+     dt_dailycollection.`fp` AS fp
+FROM
+     `dt_dailycollection` dt_dailycollection
+WHERE
+    dt_dailycollection.`farmerId`=$P{farmerid}
+AND dt_dailycollection.`date` BETWEEN $P{from_date} AND $P{to_date}
+GROUP BY Day(dt_dailycollection.`date`)]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="am" class="java.lang.Double"/>
+	<field name="pm" class="java.lang.Double"/>
+	<field name="water" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="snf" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proteins" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="session" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="attendant" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rate" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fat" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fp" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="am_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{am}]]></variableExpression>
+	</variable>
+	<variable name="pm_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pm}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<frame>
+				<reportElement uuid="5253b734-0216-48c4-b770-d4f86a3c5aab" mode="Opaque" x="0" y="15" width="274" height="20" backcolor="#CCCCFF"/>
+				<staticText>
+					<reportElement uuid="ca2363ce-47c9-408c-b2c8-d40954696b32" x="15" y="0" width="137" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Farmer Daily Collection]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8d63755d-469a-404f-8ba5-40c831cf7368" x="0" y="5" width="37" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="609e03c7-c90f-4060-97b4-c927e12629ec" x="37" y="5" width="33" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9933df85-29ce-4842-acf1-fa6c7fef385f" x="170" y="5" width="52" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ce2e9486-bd1e-4403-bc71-e98aefea4361" x="222" y="5" width="52" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Attendant]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7cfaca90-8a8f-47a8-85f7-ed6a741d3fff" x="0" y="24" width="274" height="1" forecolor="#0099CC"/>
+			</line>
+			<staticText>
+				<reportElement uuid="fb779b5d-710b-43b8-b8d8-26afa5e74e98" x="89" y="5" width="41" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[AM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd396bb5-32ea-49f2-99ea-3b4d5d3c166a" x="130" y="5" width="42" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3480189a-f6b9-4302-8f2e-3317c05faaa3" x="0" y="0" width="37" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f8eca598-2fd5-4e87-8135-4dcbdeb12a48" x="37" y="0" width="33" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="720f2f73-e45c-429d-abc7-e2470b5a3df5" x="170" y="0" width="52" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f02427e-43af-4804-827e-0f203461eacb" x="222" y="0" width="52" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{attendant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b7658fd7-c7f8-4631-b775-2f51ce0da98d" x="89" y="0" width="41" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{am}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c13ef13e-978d-4c5d-a163-8086be28f8e1" x="130" y="0" width="42" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pm}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<textField>
+				<reportElement uuid="720c7c97-9fea-4009-ac26-86d6cf3f8958" x="89" y="0" width="41" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{am_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aecfd43f-5ce1-4cb3-8e44-396c4bc9e35a" x="130" y="0" width="42" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pm_1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="69e00fb2-508f-48c3-b3e1-79a142a950e2" x="0" y="0" width="274" height="1" forecolor="#0099CC"/>
+			</line>
+			<staticText>
+				<reportElement uuid="b73adfa5-4d24-4a25-a73b-6ddf75d4509c" x="10" y="1" width="79" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptPatientTests" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a33400e-9e5b-4f02-80c8-cbfc3382a119">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FCFF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FCFF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FCFF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="c97a84fd-bfbe-4212-865e-27f08904ae59"/>
+	<parameter name="patientid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *,
+     SUM(dt_labresults.`Cost`) AS Total_cost
+
+FROM
+     `dt_labresults` dt_labresults
+WHERE
+     dt_labresults.`PatientId` = $P{patientid} AND dt_labresults.`Date`=$P{date} GROUP BY dt_labresults.`TestId`]]>
+	</queryString>
+	<field name="Counter" class="java.lang.String"/>
+	<field name="PatientId" class="java.lang.String"/>
+	<field name="Gender" class="java.lang.String"/>
+	<field name="Age" class="java.lang.String"/>
+	<field name="Sample" class="java.lang.String"/>
+	<field name="TestId" class="java.lang.String"/>
+	<field name="Cost" class="java.lang.String"/>
+	<field name="Results" class="java.lang.String"/>
+	<field name="Normal" class="java.lang.String"/>
+	<field name="Range" class="java.lang.String"/>
+	<field name="Comments" class="java.lang.String"/>
+	<field name="Date" class="java.lang.String"/>
+	<field name="LabTechnicianId" class="java.lang.String"/>
+	<field name="Total_cost" class="java.lang.Double"/>
+	<variable name="Total_cost_1" class="java.lang.Double" resetType="Group" resetGroup="PatientId" calculation="Sum">
+		<variableExpression><![CDATA[$F{Total_cost}]]></variableExpression>
+	</variable>
+	<group name="PatientId">
+		<groupExpression><![CDATA[$F{PatientId}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="25">
+				<staticText>
+					<reportElement uuid="230c2856-cf85-44b2-9265-5b14b6214a0a" x="1" y="0" width="100" height="25"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Cost :]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="2fe6ca40-1682-4e24-8963-28b8665377ab" x="134" y="0" width="102" height="25"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{Total_cost_1}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="304addf3-ded7-403e-9594-1a0aa00f5193" x="0" y="0" width="802" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#9999FF"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="sample">
+		<groupExpression><![CDATA[$F{Sample}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<frame>
+					<reportElement uuid="c8d1bfd2-7049-481e-9dac-4c82e07edc61" mode="Opaque" x="1" y="0" width="801" height="24" forecolor="#B89F7D" backcolor="#C7D1F9"/>
+					<rectangle>
+						<reportElement uuid="b382ac0e-8410-410d-ab30-e4cdb97d8093" mode="Opaque" x="12" y="5" width="16" height="14" backcolor="#000000"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement uuid="a9278de5-62cf-4544-9994-d3d8e3069c18" style="SubTitle" x="38" y="0" width="126" height="24" forecolor="#000000"/>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{Sample}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="213" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0221cf9f-09fc-4514-9c8e-820604bf6632" style="SubTitle" x="493" y="71" width="152" height="25" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="18" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Patient Lab tests]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="70d8c985-2c71-4e4a-8656-fcc199c16535" x="17" y="31" width="259" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSULTANT OBSTETRICIAN GYNAECOLOGIST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7fd6b101-f9b9-42f3-91a7-15861c806c90" x="17" y="51" width="313" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel: Off. 051: -2215 - 573,Res.051-2214-487, Mob.0733-791-887]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0bdf6ebf-8aef-4163-a5df-ec4d52ab1af7" x="183" y="21" width="210" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M.B Ch.B. Med (Obs/Gynae) Nrb]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b17f778-359a-4b08-9f08-b59d2a7edbd6" x="17" y="21" width="166" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DR.BENEDICT T.OSORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="032f8559-72f8-435c-8897-cb4bc377cb96" x="17" y="61" width="206" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[P.O.BOX 14061 NAKURU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="67656d28-2f9c-4232-adfe-c95eb9db2bf4" x="17" y="114" width="75" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Patient Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0576f24-3815-4151-a957-7868e06f2857" x="17" y="129" width="75" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Age :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e2b2c82e-5164-41a6-a33f-e23613eb6be7" x="17" y="144" width="75" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sex :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a0b499b-018e-4dad-9631-383049b4f643" x="17" y="159" width="75" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Test Done :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="35b5a21f-26d9-4153-8c13-d97b990240d6" x="92" y="114" width="204" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PatientId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56f25807-4d48-41db-99da-c31df9b5a21e" x="93" y="129" width="203" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Age}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="55648518-f570-4739-8d71-d805502434a2" x="93" y="144" width="203" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Gender}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="bc8f277c-887b-4a98-b687-601a55ddddcf" x="13" y="102" width="772" height="1"/>
+				<graphicElement>
+					<pen lineColor="#9999FF"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="2ba23ab9-d407-42cb-b14c-9396e472c52a" positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="b717c786-7b07-49fd-a413-0cc3929c0894" style="Column header" x="1" y="0" width="133" height="15" forecolor="#000000"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[TestId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="261ec785-def1-461e-be30-bddc434fa0b0" style="Column header" x="134" y="0" width="100" height="15" forecolor="#000000"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="09faee2d-bcf8-4c7d-bc5f-08c4f572ac00" style="Column header" x="234" y="0" width="154" height="15" forecolor="#000000"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Results]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b241996e-f706-4bef-8b60-161b3ab59c0d" style="Column header" x="376" y="0" width="152" height="15" forecolor="#000000"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Normal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c0e283f1-5a21-40c2-9e26-500e973ad312" style="Column header" x="528" y="1" width="107" height="15" forecolor="#000000"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Range]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement uuid="ab63abde-37cb-481b-92d2-8cc08c396c1c" style="Row" mode="Opaque" x="0" y="0" width="802" height="22" backcolor="#FFFFFF"/>
+				<textField>
+					<reportElement uuid="589125a5-ee54-4c8a-990c-6e4ac08cde8a" x="0" y="2" width="122" height="13"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{TestId}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="25250754-cceb-40c3-a477-fe603bd54023" x="134" y="2" width="100" height="13"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Cost}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="c36b6b43-caec-4b6c-a50d-5a3c419b9249" x="236" y="0" width="140" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Results}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="ec5231c1-7c84-4bad-9a24-e206e266b54f" x="376" y="3" width="152" height="13"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Normal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="e7b070d2-89a4-4e42-be92-d48a970f2268" x="528" y="1" width="107" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Range}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement uuid="45f38fde-d9fd-46c1-a09b-e77884ac488c" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="eb88715c-c6f0-4d8c-bea4-53dbfa59251a" x="1" y="0" width="58" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Done by :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="378177bc-8eeb-4f6c-b35e-59594343c2bf" x="59" y="3" width="177" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{LabTechnicianId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement uuid="3df8d331-5314-4fcc-b59e-811f7b215a5f" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="ee60aea0-d15b-4654-9922-2b373a73bbb2" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="133fbf0f-ab94-4883-bd24-ba3713f7ab8c" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy HH.mm.ss">
+					<reportElement uuid="205c6865-3828-40ba-8ce1-569c57c42465" style="Column header" x="22" y="1" width="91" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

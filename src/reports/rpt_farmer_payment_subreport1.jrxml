@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_farmer_payment_subreport1" language="groovy" pageWidth="195" pageHeight="20" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="195" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="b756a722-5bc4-4bb3-aef9-c6802aeee9f4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="farmerid" class="java.lang.String"/>
+	<parameter name="from_date" class="java.lang.Integer"/>
+	<parameter name="to_date" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Kent\\Documents\\NetBeansProjects\\farmTech\\src\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_farmer_account.`id` AS account_id,
+     dt_farmer_account.`farmerId` AS farmerId,
+     dt_farmer_account.`Date` AS Date,
+     dt_farmer_account.`Type` AS Type,
+     dt_farmer_account.`Description` AS Description,
+     sum(dt_farmer_account.`Debit`) AS Debit,
+     sum(dt_farmer_account.`Credit`) AS Credit
+FROM
+     `dt_farmer_account` dt_farmer_account
+WHERE
+     dt_farmer_account.`farmerId`= $P{farmerid}
+AND
+   Month(dt_farmer_account.`Date`)=$P{from_date} AND  Year(dt_farmer_account.`Date`)=$P{to_date}
+AND
+  dt_farmer_account.`Description`='Milk'
+Group by dt_farmer_account.`Type`]]>
+	</queryString>
+	<field name="account_id" class="java.lang.Integer"/>
+	<field name="farmerId" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Debit" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Credit" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="Credit_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{Credit}]]></variableExpression>
+	</variable>
+	<variable name="Debit_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{Debit}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="14">
+			<textField>
+				<reportElement x="0" y="1" width="70" height="12" uuid="bfa522ec-62b8-4c07-9f7c-692db4280a2b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="70" y="2" width="121" height="12" uuid="45f564a1-b9c9-4294-acb2-ee82132ea853"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Credit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

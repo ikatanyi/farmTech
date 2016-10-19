@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtAssets" table="dt_assets" catalog="db_dms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="type" type="string">
+            <column name="type" length="50" not-null="true" />
+        </property>
+        <property name="license" type="string">
+            <column name="license" length="100" not-null="true" />
+        </property>
+        <property name="regno" type="string">
+            <column name="regno" length="100" not-null="true" />
+        </property>
+        <property name="size" type="string">
+            <column name="size" length="50" not-null="true" />
+        </property>
+        <property name="amount" type="double">
+            <column name="amount" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="2000" not-null="true" />
+        </property>
+        <property name="purchaseDate" type="string">
+            <column name="purchase_date" length="20" not-null="true" />
+        </property>
+        <property name="userid" type="string">
+            <column name="userid" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

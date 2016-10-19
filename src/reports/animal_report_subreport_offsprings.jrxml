@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="animal_report_subreport_offsprings" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="85865bdd-e4d0-408c-9508-69a49b43ab29">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="animal_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dt_herdregister.`herd_name` AS herd_name,
+     dt_herdregister.`class` AS class,
+     dt_herdregister.`sex` AS sex,
+     dt_herdregister.`dob` AS dob,
+     dt_herdregister.`animal_farm_no` AS animal_farm_no,
+     dt_herdregister.`sire_no` AS sire_no,
+     dt_herdregister.`dam_no` AS dam_no
+FROM
+     `dt_herdregister` dt_herdregister
+WHERE
+   dt_herdregister.`sire_no`=$P{animal_no}
+or
+  dt_herdregister.`dam_no`=$P{animal_no}]]>
+	</queryString>
+	<field name="herd_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sex" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dob" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="animal_farm_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sire_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dam_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="24" width="493" height="1" forecolor="#9999FF" uuid="c2935c7b-d1a7-49c9-b2c3-752e1ac65c31"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="7" width="25" height="17" uuid="73a735ac-f9f7-48b8-b3ca-f32785ff5852"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="7" width="110" height="17" uuid="f5bf55f0-8833-49a0-9e9f-5e2fa8724f5c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Animal Farm_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="7" width="85" height="17" uuid="533b5068-2f62-4aa8-8ecb-1b51fdbe6a46"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="7" width="97" height="17" uuid="f5a62236-7e50-49d5-b385-3d99826a77c7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sex]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="7" width="120" height="17" uuid="79826579-d6e4-45f6-9d7e-98abed20a2f3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="0" width="25" height="14" uuid="142ec3b2-c195-4503-936a-163744df13fc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="28" y="0" width="110" height="14" uuid="b41113bb-a1bd-4327-bac2-91cfdb72104d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{animal_farm_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="85" height="14" uuid="75f84b29-3473-4008-bb79-c5f995bbe960"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="97" height="14" uuid="205c0a20-3fd7-4ece-aef9-a171a71ff752"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="0" width="120" height="14" uuid="a7ef2136-d083-40ee-a256-91a399206095"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{class}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="0" width="493" height="1" uuid="a846b962-d502-4830-ae1c-e7b537c170b8"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

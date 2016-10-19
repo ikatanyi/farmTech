@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 17, 2014 1:31:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="farm.entity.DtCustCompany" table="dt_cust_company" catalog="db_dms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="companyName" type="string">
+            <column name="CompanyName" length="100" not-null="true" />
+        </property>
+        <property name="fname" type="string">
+            <column name="Fname" length="50" not-null="true" />
+        </property>
+        <property name="lname" type="string">
+            <column name="Lname" length="50" not-null="true" />
+        </property>
+        <property name="contact" type="string">
+            <column name="Contact" length="50" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" length="50" not-null="true" />
+        </property>
+        <property name="fax" type="string">
+            <column name="Fax" length="50" not-null="true" />
+        </property>
+        <property name="aphone" type="string">
+            <column name="APhone" length="50" not-null="true" />
+        </property>
+        <property name="acontact" type="string">
+            <column name="AContact" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" not-null="true" />
+        </property>
+        <property name="cc" type="string">
+            <column name="Cc" length="50" not-null="true" />
+        </property>
+        <property name="billTo" type="string">
+            <column name="Bill_to" length="400" not-null="true" />
+        </property>
+        <property name="terms" type="string">
+            <column name="Terms" length="2000" not-null="true" />
+        </property>
+        <property name="comments" type="string">
+            <column name="Comments" length="2000" not-null="true" />
+        </property>
+        <property name="sendmethod" type="string">
+            <column name="Sendmethod" length="2000" not-null="true" />
+        </property>
+        <property name="date" type="string">
+            <column name="Date" length="20" not-null="true" />
+        </property>
+        <property name="userId" type="string">
+            <column name="userId" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

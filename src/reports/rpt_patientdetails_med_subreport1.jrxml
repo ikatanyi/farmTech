@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_patientdetails_med_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fc84bc55-09b7-415d-b48e-22d4bebffe21">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="patientId" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     dt_medicine_table.`PatientID` AS dt_medicine_table_PatientID,
+     dt_medicine_table.`MedName` AS dt_medicine_table_MedName,
+     dt_medicine_table.`No_doses` AS dt_medicine_table_No_doses,
+     dt_medicine_table.`Duration` AS dt_medicine_table_Duration,
+     dt_medicine_table.`Physician` AS dt_medicine_table_Physician,
+     dt_medicine_table.`Date` AS dt_medicine_table_Date
+FROM
+     `dt_medicine_table` dt_medicine_table
+WHERE
+     dt_medicine_table.`PatientID`=$P{patientId} AND dt_medicine_table.`Date`=$P{date}]]>
+	</queryString>
+	<field name="dt_medicine_table_PatientID" class="java.lang.String"/>
+	<field name="dt_medicine_table_MedName" class="java.lang.String"/>
+	<field name="dt_medicine_table_No_doses" class="java.lang.String"/>
+	<field name="dt_medicine_table_Duration" class="java.lang.String"/>
+	<field name="dt_medicine_table_Physician" class="java.lang.String"/>
+	<field name="dt_medicine_table_Date" class="java.lang.String"/>
+	<title>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f6def4de-fa54-4958-9261-b69595a406a1" x="0" y="5" width="144" height="20" forecolor="#0066CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Medication History]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2f1f57a5-848b-4211-9ab2-22a55473b621" x="132" y="0" width="76" height="20" forecolor="#0066CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dosage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3af510d-a997-4ca3-b09c-1d2f9416dc4c" x="208" y="0" width="94" height="20" forecolor="#0066CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Duration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d9b3c34-ee82-4758-afb5-85f1fe3f2d8c" x="302" y="0" width="115" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" forecolor="#0066CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Physician]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48f63d70-1597-47e3-b79c-a2aaa4367289" x="0" y="0" width="132" height="20" forecolor="#0066CC"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Med Desc.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="a54c5bef-8be5-49b4-b17b-3addde9cbf7b" x="132" y="0" width="76" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_medicine_table_No_doses}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1bb2ee21-00f8-4589-81f3-fe8550cd767c" x="208" y="0" width="94" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_medicine_table_Duration}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="42a5a185-1e75-4308-b56e-f5e52c5ae530" x="302" y="0" width="115" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_medicine_table_Physician}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="72e6e586-4b4a-49a1-914f-22e93358d825" x="0" y="0" width="132" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dt_medicine_table_MedName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
